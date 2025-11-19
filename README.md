@@ -24,3 +24,5 @@ you have hobbies, non-statistics majors or minors with interesting problems.
 – Bad ideas include: national politics, major sports leagues, and kaggle; these topics have been
 over-analyzed already and you won’t be able to match what’s out there within the framework of
 this group project.
+
+Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
