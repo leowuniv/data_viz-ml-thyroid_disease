@@ -35,7 +35,7 @@ The topics that we would want to cover are definitely related to machine learnin
 
 ## **Sources:**
 
-Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
-GitHub README Types of Thyroid Disease Image: [https://www.pacehospital.com/thyroid-disease-types-causes-symptoms-treatment-prevention]
+- Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
+- GitHub README Types of Thyroid Disease Image: [https://www.pacehospital.com/thyroid-disease-types-causes-symptoms-treatment-prevention]
 
 ----------------
