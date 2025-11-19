@@ -1,11 +1,14 @@
-# data_viz-ml-thyroid_disease
+# DataViz Analysis for Stats20 using ML Techniques
 
 UCLA : STATS 20
 
-DataViz Analysis for Stats20 using ML Techniques
+DataViz Analysis for Stats20 using ML Techniques On Thyroid Disease
+
+----------------
 
 <img width="640" height="640" alt="image" src="https://github.com/user-attachments/assets/2c5d5393-e9b2-493c-90b6-29593057dfb4" />
-[Source: https://www.pacehospital.com/thyroid-disease-types-causes-symptoms-treatment-prevention]
+
+----------------
 
 Theme:
 
@@ -25,4 +28,11 @@ you have hobbies, non-statistics majors or minors with interesting problems.
 over-analyzed already and you won’t be able to match what’s out there within the framework of
 this group project.
 
+----------------
+
+**Sources:**
+
 Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
+GitHub README Types of Thyroid Disease Image: [https://www.pacehospital.com/thyroid-disease-types-causes-symptoms-treatment-prevention]
+
+----------------
