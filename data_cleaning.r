@@ -1,12 +1,7 @@
----
-title: "Data_Cleaning_Stats_20_Project"
-output: html_document
----
-
 #importing datasets
-```{r}
 allhypo <- read.csv("allhypo.data", header = F) #import of allhypo.data file
-allbp <- read.csv("allhypo.data", header = F)
+allhyper <- read.csv("allhyper.data", header = F)
+allbp <- read.csv("allbp.data", header = F)
 allrep <- read.csv("allrep.data", header = F)
 dis <- read.csv("dis.data", header = F)
 hypothyroid <- read.csv("hypothyroid.data", header = F)
@@ -14,93 +9,94 @@ new_thyroid <- read.csv("new-thyroid.data", header = F)
 sick_euthyroid <- read.csv("sick-euthyroid.data", header = F)
 sick <- read.csv("sick.data", header = F)
 thyroid0387 <- read.csv("thyroid0387.data", header = F)
-```
 
-```{r}
-head(allbp)
-#drop column V28 because it contains almost all "?"
-```
+# function to rename 30-column datasets as they all have the same column headers
+rename_30col <- function(dataset){
+  names(dataset)[names(dataset) == "V1"] <- "age"
+  names(dataset)[names(dataset) == "V2"] <- "sex"
+  names(dataset)[names(dataset) == "V3"] <- "presc_thyroxine"
+  names(dataset)[names(dataset) == "V4"] <- "queried_why_on_thyroxine"
+  names(dataset)[names(dataset) == "V5"] <- "presc_anthyroid_meds"
+  names(dataset)[names(dataset) == "V6"] <- "sick"
+  names(dataset)[names(dataset) == "V7"] <- "pregnant"
+  names(dataset)[names(dataset) == "V8"] <- "thyroid_surgery"
+  names(dataset)[names(dataset) == "V9"] <- "radioactive_iodine_therapyI131"
+  names(dataset)[names(dataset) == "V10"] <- "query_hypothyroid"
+  names(dataset)[names(dataset) == "V11"] <- "query_hyperthyroid"
+  names(dataset)[names(dataset) == "V12"] <- "lithium"
+  names(dataset)[names(dataset) == "V13"] <- "goitre"
+  names(dataset)[names(dataset) == "V14"] <- "tumor"
+  names(dataset)[names(dataset) == "V15"] <- "hypopituitarism"
+  names(dataset)[names(dataset) == "V16"] <- "psych_condition"
+  names(dataset)[names(dataset) == "V17"] <- "TSH_measured"
+  names(dataset)[names(dataset) == "V18"] <- "TSH_reading"
+  names(dataset)[names(dataset) == "V19"] <- "T3_measured"
+  names(dataset)[names(dataset) == "V20"] <- "T3_reading"
+  names(dataset)[names(dataset) == "V21"] <- "T4_measured"
+  names(dataset)[names(dataset) == "V22"] <- "T4_reading"
+  names(dataset)[names(dataset) == "V23"] <- "thyrox_util_rate_T4U_measured"
+  names(dataset)[names(dataset) == "V24"] <- "thyrox_util_rate_T4U_reading"
+  names(dataset)[names(dataset) == "V25"] <- "FTI_measured"
+  names(dataset)[names(dataset) == "V26"] <- "FTI_reading"
+  names(dataset)[names(dataset) == "V27"] <- "ref_src"
+  # names(dataset)[names(dataset) == "V28"] <- "psych_condition" drop column
+  dataset <- subset(dataset, select = -V28) 
+  names(dataset)[names(dataset) == "V29"] <- "ThyroidClass"
+  names(dataset)[names(dataset) == "V30"] <- "record_id"
+  
+  return(dataset)
+}
 
+# function to rename 26-column datasets
+rename_26col <- function(dataset){
+  names(dataset)[names(dataset) == "V1"] <- "ThyroidClass"
+  names(dataset)[names(dataset) == "V2"] <- "age"
+  names(dataset)[names(dataset) == "V3"] <- "sex"
+  names(dataset)[names(dataset) == "V4"] <- "presc_thyroxine"
+  names(dataset)[names(dataset) == "V5"] <- "query_on_thyroxine"
+  names(dataset)[names(dataset) == "V6"] <- "presc_anthyroid_meds"
+  names(dataset)[names(dataset) == "V7"] <- "thyroid_surgery"
+  names(dataset)[names(dataset) == "V8"] <- "query_hypothyroid"
+  names(dataset)[names(dataset) == "V9"] <- "query_hyperthyroid"
+  names(dataset)[names(dataset) == "V10"] <- "pregnant"
+  names(dataset)[names(dataset) == "V11"] <- "sick"
+  names(dataset)[names(dataset) == "V12"] <- "tumor"
+  names(dataset)[names(dataset) == "V13"] <- "lithium"
+  names(dataset)[names(dataset) == "V14"] <- "goitre"
+  names(dataset)[names(dataset) == "V15"] <- "TSH_measured"
+  names(dataset)[names(dataset) == "V16"] <- "TSH_reading"
+  names(dataset)[names(dataset) == "V17"] <- "T3_measured"
+  names(dataset)[names(dataset) == "V18"] <- "T3_reading"
+  names(dataset)[names(dataset) == "V19"] <- "T4_measured"
+  names(dataset)[names(dataset) == "V20"] <- "T4_reading"
+  names(dataset)[names(dataset) == "V21"] <- "T4U_measured"
+  names(dataset)[names(dataset) == "V22"] <- "T4U_reading"
+  names(dataset)[names(dataset) == "V23"] <- "FTI_measured"
+  names(dataset)[names(dataset) == "V24"] <- "FTI_reading"
+  names(dataset)[names(dataset) == "V25"] <- "TBG_measured"
+  names(dataset)[names(dataset) == "V26"] <- "TBG_reading"
+  
+  return(dataset)
+}
 
-#rename columns for allbp
-```{r}
-names(allbp)[names(allbp) == "V1"] <- "Age"
-names(allbp)[names(allbp) == "V2"] <- "Sex"
-names(allbp)[names(allbp) == "V3"] <- "presc_thyroxine"
-names(allbp)[names(allbp) == "V4"] <- "queried_why_on_thyroxine"
-names(allbp)[names(allbp) == "V5"] <- "presc_anthyroid_meds"
-names(allbp)[names(allbp) == "V6"] <- "sick"
-names(allbp)[names(allbp) == "V7"] <- "pregnant"
-names(allbp)[names(allbp) == "V8"] <- "thyroid_surgery"
-names(allbp)[names(allbp) == "V9"] <- "radioactive_iodine_therapyI131"
-names(allbp)[names(allbp) == "V10"] <- "query_hypothyroid"
-names(allbp)[names(allbp) == "V11"] <- "query_hyperthyroid"
-names(allbp)[names(allbp) == "V12"] <- "lithium"
-names(allbp)[names(allbp) == "V13"] <- "goitre"
-names(allbp)[names(allbp) == "V14"] <- "tumor"
-names(allbp)[names(allbp) == "V15"] <- "hypopituitarism"
-names(allbp)[names(allbp) == "V16"] <- "psych_condition"
-names(allbp)[names(allbp) == "V17"] <- "TSH_measured"
-names(allbp)[names(allbp) == "V18"] <- "TSH_reading"
-names(allbp)[names(allbp) == "V19"] <- "T3_measured"
-names(allbp)[names(allbp) == "V20"] <- "T3_measured"
-names(allbp)[names(allbp) == "V21"] <- "T4_measured"
-names(allbp)[names(allbp) == "V22"] <- "T4_reading"
-names(allbp)[names(allbp) == "V23"] <- "thyrox_util_rate_T4U_measured"
-names(allbp)[names(allbp) == "V24"] <- "thyrox_util_rate_T4U_reading"
-names(allbp)[names(allbp) == "V25"] <- "FTI_measured"
-names(allbp)[names(allbp) == "V26"] <- "FTI_reading"
-names(allbp)[names(allbp) == "V27"] <- "ref_src"
-## names(allbp)[names(allbp) == "V28"] <- "psych_condition" drop column 
-allbp <- subset(allbp, select = -V28)
-names(allbp)[names(allbp) == "V29"] <- "ThyroidClass"
-names(allbp)[names(allbp) == "V30"] <- "record_id"
-```
+# rename 30-col datasets
+allhypo <- rename_30col(allhypo)
+allhyper <- rename_30col(allhyper)
+allbp <- rename_30col(allbp)
+allrep <- rename_30col(allrep)
+dis <- rename_30col(dis)
+sick <- rename_30col(sick)
+thyroid0387 <- rename_30col(thyroid0387)
 
-#now allhypo
-
-```{r}
-View(allhypo)
-```
-
-```{r}
-names(allhypo)[names(allhypo) == "V1"] <- "Age"
-names(allhypo)[names(allhypo) == "V2"] <- "Sex"
-names(allhypo)[names(allhypo) == "V3"] <- "presc_thyroxine"
-names(allhypo)[names(allhypo) == "V4"] <- "queried_why_on_thyroxine"
-names(allhypo)[names(allhypo) == "V5"] <- "presc_anthyroid_meds"
-names(allhypo)[names(allhypo) == "V6"] <- "sick"
-names(allhypo)[names(allhypo) == "V7"] <- "pregnant"
-names(allhypo)[names(allhypo) == "V8"] <- "thyroid_surgery"
-names(allhypo)[names(allhypo) == "V9"] <- "radioactive_iodine_therapyI131"
-names(allhypo)[names(allhypo) == "V10"] <- "query_hypothyroid"
-names(allhypo)[names(allhypo) == "V11"] <- "query_hyperthyroid"
-names(allhypo)[names(allhypo) == "V12"] <- "lithium"
-names(allhypo)[names(allhypo) == "V13"] <- "goitre"
-names(allhypo)[names(allhypo) == "V14"] <- "tumor"
-names(allhypo)[names(allhypo) == "V15"] <- "hypopituitarism"
-names(allhypo)[names(allhypo) == "V16"] <- "psych_condition"
-names(allhypo)[names(allhypo) == "V17"] <- "TSH_measured"
-names(allhypo)[names(allhypo) == "V18"] <- "TSH_reading"
-names(allhypo)[names(allhypo) == "V19"] <- "T3_measured"
-names(allhypo)[names(allhypo) == "V20"] <- "T3_measured"
-names(allhypo)[names(allhypo) == "V21"] <- "T4_measured"
-names(allhypo)[names(allhypo) == "V22"] <- "T4_reading"
-names(allhypo)[names(allhypo) == "V23"] <- "thyrox_util_rate_T4U_measured"
-names(allhypo)[names(allhypo) == "V24"] <- "thyrox_util_rate_T4U_reading"
-names(allhypo)[names(allhypo) == "V25"] <- "FTI_measured"
-names(allhypo)[names(allhypo) == "V26"] <- "FTI_reading"
-names(allhypo)[names(allhypo) == "V27"] <- "ref_src"
-## names(allhypo)[names(allhypo) == "V28"] drop column 
-allhypo <- subset(allhypo, select = -V28)
-names(allhypo)[names(allhypo) == "V29"] <- "ThyroidClass"
-names(allhypo)[names(allhypo) == "V30"] <- "record_id"
-```
-
-
+# rename 26-col datasets
+sick_euthyroid <- rename_26col(sick_euthyroid)
+hypothyroid <- rename_26col(hypothyroid)
 
 
-
-
-
-
+# rename new_thyroid
+names(new_thyroid)[names(new_thyroid) == "V1"] <- "ThyroidClass"
+names(new_thyroid)[names(new_thyroid) == "V2"] <- "T3_resin_uptake"
+names(new_thyroid)[names(new_thyroid) == "V3"] <- "total_serum_thyroxin"
+names(new_thyroid)[names(new_thyroid) == "V4"] <- "total_serum_triiodothyronine"
+names(new_thyroid)[names(new_thyroid) == "V5"] <- "basal_TSH"
+names(new_thyroid)[names(new_thyroid) == "V6"] <- "TSH_diff"
