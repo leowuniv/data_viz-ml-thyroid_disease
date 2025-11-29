@@ -10,6 +10,7 @@
 library(ggplot2)
 
 # CSV files:
+# [Refer to/pulled from data_cleaning R file for more clearance on data sets]
 # read.csv("") # void out later when merging into main file
 
 # =====================================
