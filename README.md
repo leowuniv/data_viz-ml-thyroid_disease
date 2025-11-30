@@ -33,9 +33,15 @@ The topics that we would want to cover are definitely related to machine learnin
 
 ----------------
 
-## **Sources:**
+## **Works Cited/Sources:**
 
 - Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
 - GitHub README Types of Thyroid Disease Image: [https://www.pacehospital.com/thyroid-disease-types-causes-symptoms-treatment-prevention]
+
+Organizers/Fonts/Simplicity Visuals
+
+- Font Text: https://fsymbols.com/generators/tarty/
+- Emoji Text: https://emojipedia.org/
+- Slides Tool: https://workspace.google.com/products/slides/
 
 ----------------
