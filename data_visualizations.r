@@ -27,6 +27,8 @@ while():
   print("2. Histogram (Comparison of Age Distribution between Patients) 📆⏳")
   print("3. Scatterplot (Comparison of...) 📋")
 
+# For Color Documentation: https://search.r-project.org/CRAN/refmans/insight/html/print_color.html [Add to Sources if plan to use]
+
 # =====================================
 
 #install.packages("ggplot2")
