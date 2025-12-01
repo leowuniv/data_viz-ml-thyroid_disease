@@ -33,6 +33,11 @@ The topics that we would want to cover are definitely related to machine learnin
 
 ----------------
 
+### Data-Viz Slides 💼:
+### 2-Page Report 📄:
+
+----------------
+
 ## **Works Cited/Sources:**
 
 - Dataset Analyzed: Thyroid Disease : UC Irvine Machine Learning Repository [https://archive.ics.uci.edu/dataset/102/thyroid+disease]
