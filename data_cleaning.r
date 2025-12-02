@@ -38,11 +38,25 @@ rename_30col <- function(dataset){
   names(dataset)[names(dataset) == "V24"] <- "thyrox_util_rate_T4U_reading"
   names(dataset)[names(dataset) == "V25"] <- "FTI_measured"
   names(dataset)[names(dataset) == "V26"] <- "FTI_reading"
-  names(dataset)[names(dataset) == "V27"] <- "ref_src"
-  # names(dataset)[names(dataset) == "V28"] <- "psych_condition" drop column
-  dataset <- subset(dataset, select = -V28) 
-  names(dataset)[names(dataset) == "V29"] <- "ThyroidClass"
-  names(dataset)[names(dataset) == "V30"] <- "record_id"
+  
+  # drop columns 27 as all f values and 28 all ?
+  dataset <- subset(dataset, select = -V27)
+  dataset <- subset(dataset, select = -V28)
+  
+  names(dataset)[names(dataset) == "V29"] <- "ref_src"
+  
+  # split the strings in col30 using splitter ".|"
+  split_col_30 <- strsplit(dataset$V30, split = ".|", fixed = TRUE)
+  
+  ThyroidClass <- sapply(split_col_30, function(x) x[1])
+  record_id <- as.numeric(sapply(split_col_30, function(x) x[2]))
+  
+  # drop column 30 
+  dataset <- subset(dataset, select = -V30)
+  
+  # add new columns
+  dataset$ThyroidClass <- ThyroidClass
+  dataset$record_id <- record_id
   
   return(dataset)
 }
