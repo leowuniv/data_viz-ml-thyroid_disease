@@ -49,5 +49,11 @@ library(ggplot2)
 ggplot(allbp, aes(x = Age)) + 
   geom_histogram()
 
+# Analysis:
+# (Write on markdown/report)
+
 # Plot 2
+
+# =====================================
+
 
