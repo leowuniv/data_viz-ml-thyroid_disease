@@ -114,3 +114,31 @@ names(new_thyroid)[names(new_thyroid) == "V3"] <- "total_serum_thyroxin"
 names(new_thyroid)[names(new_thyroid) == "V4"] <- "total_serum_triiodothyronine"
 names(new_thyroid)[names(new_thyroid) == "V5"] <- "basal_TSH"
 names(new_thyroid)[names(new_thyroid) == "V6"] <- "TSH_diff"
+
+#replace ? with NA
+allhypo[allhypo == "?"] <- NA 
+allhyper[allhyper == "?"] <- NA 
+allbp[allbp == "?"] <- NA
+allrep[allrep == "?"] <- NA
+dis[dis == "?"] <- NA
+hypothyroid[hypothyroid == "?"] <- NA
+new_thyroid[new_thyroid == "?"] <- NA
+sick_euthyroid[sick_euthyroid == "?"] <- NA
+sick[sick == "?"] <- NA
+thyroid0387[thyroid0387 == "?"] <- NA
+ann_test[ann_test == "?"] <- NA
+ann_train[ann_train == "?"] <- NA
+
+#remoce nas from the datasets. 
+remove_nas_allhypo <- na.omit(allhypo)
+remove_nas_allhyper <- na.omit(allhyper)
+remove_nas_allbp <- na.omit(allbp)
+remove_nas_allrep <- na.omit(allrep)
+remove_nas_dis <- na.omit(dis)
+remove_nas_hypothyroid <- na.omit(hypothyroid)
+remove_nas_new_thyroid <- na.omit(new_thyroid)
+remove_nas_sick_euthyroid <- na.omit(sick_euthyroid)
+remove_nas_sick <- na.omit(sick)
+remove_nas_thyroid0387 <- na.omit(thyroid0387)
+remove_nas_ann_test <- na.omit(ann_test)
+remove_nas_ann_train <- na.omit(ann_train)
