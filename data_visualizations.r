@@ -54,6 +54,12 @@ ggplot(allbp, aes(x = Age)) +
 
 # Plot 2
 
+# 1] Analyzing the Data
+
+# 2] Testing the Demographic Variables of the Patients
+
+# 3] Testing the Hormone patterns??
+
 # =====================================
 
 
