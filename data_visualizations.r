@@ -56,6 +56,18 @@ ggplot(allbp, aes(x = Age)) +
 
 # 1] Analyzing the Data
 
+# Sex of the Patient Comparison To Thyroid Disease
+
+ggplot(allbp, aes(sex, fill=ThyroidClass)) +
+  geom_bar(position="fill")
+
+# Sources on Thyroid classes:
+
+# In summary, increased binding proteins (i.e. TBG) cause Thyroid hormone levels to be high; decreased = lower Thyroid hormone levels
+
+# https://www.ncbi.nlm.nih.gov/books/NBK544274/ 
+# https://medlineplus.gov/genetics/condition/inherited-thyroxine-binding-globulin-deficiency/
+
 # 2] Testing the Demographic Variables of the Patients
 
 # 3] Testing the Hormone patterns??
