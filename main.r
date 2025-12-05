@@ -7,8 +7,8 @@ print(test)
 # -----------------------
 
 # Command prompts to print data vizs
-
-while() {
+n <- 1
+while(n > 0) {
   print("==========================")
   print("menu")
   print("==========================")

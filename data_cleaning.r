@@ -112,6 +112,7 @@ thyroid0387 <- rename_30col(thyroid0387)
 sick_euthyroid <- rename_26col(sick_euthyroid)
 hypothyroid <- rename_26col(hypothyroid)
 
+str(new_thyroid)
 
 # rename new_thyroid
 names(new_thyroid)[names(new_thyroid) == "V1"] <- "ThyroidClass"
