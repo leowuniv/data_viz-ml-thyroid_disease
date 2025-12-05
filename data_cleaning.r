@@ -1,3 +1,7 @@
+# Disclaimer: From what our team has evaluated, each dataset contains different variables within the Thyroid class mainly based on their 
+# file purpose for testing (i.e. "sick_euthyroid" tests for euthyroid sick syndrome (ESS)) but many attributes (around 29 are mostly the 
+# same set over all the databases) where they are mostly numeric or Boolean valued attributes.
+
 #importing datasets
 allhypo <- read.csv("allhypo.data", header = F) #import of allhypo.data file
 allhyper <- read.csv("allhyper.data", header = F)
