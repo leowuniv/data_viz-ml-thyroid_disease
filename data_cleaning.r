@@ -129,7 +129,7 @@ thyroid0387[thyroid0387 == "?"] <- NA
 ann_test[ann_test == "?"] <- NA
 ann_train[ann_train == "?"] <- NA
 
-#remoce nas from the datasets. 
+#remove nas from the datasets. 
 remove_nas_allhypo <- na.omit(allhypo)
 remove_nas_allhyper <- na.omit(allhyper)
 remove_nas_allbp <- na.omit(allbp)
