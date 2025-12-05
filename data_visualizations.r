@@ -21,11 +21,13 @@ print("────────────────────────�
 print("==========================================================================================================================================================================")
 # Menu
 
-while():
+n <- 1
+while(n > 0):
   print("--------------------------")
   print("Data Visualization Selections: ➕📈")
   print("2. Histogram (Comparison of Age Distribution between Patients) 📆⏳")
   print("3. Scatterplot (Comparison of...) 📋")
+  print("Quit")
 
 # For Color Documentation: https://search.r-project.org/CRAN/refmans/insight/html/print_color.html [Add to Sources if plan to use]
 
