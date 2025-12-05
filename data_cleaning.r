@@ -9,6 +9,8 @@ new_thyroid <- read.csv("new-thyroid.data", header = F)
 sick_euthyroid <- read.csv("sick-euthyroid.data", header = F)
 sick <- read.csv("sick.data", header = F)
 thyroid0387 <- read.csv("thyroid0387.data", header = F)
+ann_test <- read.csv("ann-test.data", header = F)
+ann_train <- read.csv("ann-train.data", header = F)
 
 # function to rename 30-column datasets as they all have the same column headers
 rename_30col <- function(dataset){
