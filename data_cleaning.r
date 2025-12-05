@@ -4,7 +4,9 @@
 
 #importing datasets
 allhypo <- read.csv("allhypo.data", header = F) #import of allhypo.data file
+allhypo_test <- read.csv("allhypo.test", header = F)
 allhyper <- read.csv("allhyper.data", header = F)
+allhyper_test <- read.csv("allhyper.test", header = F)
 allbp <- read.csv("allbp.data", header = F)
 allrep <- read.csv("allrep.data", header = F)
 dis <- read.csv("dis.data", header = F)
@@ -101,7 +103,9 @@ rename_26col <- function(dataset){
 
 # rename 30-col datasets
 allhypo <- rename_30col(allhypo)
+allhypo_test <- rename_30col(allhypo_test)
 allhyper <- rename_30col(allhyper)
+allhyper_test <- rename_30col(allhyper_test)
 allbp <- rename_30col(allbp)
 allrep <- rename_30col(allrep)
 dis <- rename_30col(dis)
@@ -111,8 +115,6 @@ thyroid0387 <- rename_30col(thyroid0387)
 # rename 26-col datasets
 sick_euthyroid <- rename_26col(sick_euthyroid)
 hypothyroid <- rename_26col(hypothyroid)
-
-str(new_thyroid)
 
 # rename new_thyroid
 names(new_thyroid)[names(new_thyroid) == "V1"] <- "ThyroidClass"
@@ -124,7 +126,9 @@ names(new_thyroid)[names(new_thyroid) == "V6"] <- "TSH_diff"
 
 #replace ? with NA
 allhypo[allhypo == "?"] <- NA 
+allhypo_test[allhypo_test == "?"] <- NA
 allhyper[allhyper == "?"] <- NA 
+allhyper_test[allhyper_test == "?"] <- NA
 allbp[allbp == "?"] <- NA
 allrep[allrep == "?"] <- NA
 dis[dis == "?"] <- NA
@@ -138,7 +142,9 @@ ann_train[ann_train == "?"] <- NA
 
 #remove nas from the datasets. 
 remove_nas_allhypo <- na.omit(allhypo)
+remove_nas_allhypo_test <- na.omit(allhypo_test)
 remove_nas_allhyper <- na.omit(allhyper)
+remove_nas_allhyper_test <- na.omit(allhyper_test)
 remove_nas_allbp <- na.omit(allbp)
 remove_nas_allrep <- na.omit(allrep)
 remove_nas_dis <- na.omit(dis)
