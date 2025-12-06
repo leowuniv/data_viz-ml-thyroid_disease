@@ -114,7 +114,7 @@ x_test <- model.matrix(ThyroidClass ~ ., test_data)[, -1]
 # s = "lambda.min" -> chooses the lambda with the lowest cross-validation error
 # type = "response" -> returns probabilities (between 0 and 1)
 probabilities <- predict(
-    logreg_model,
+    model,
     newx = x_test,
     s = "lambda.min",
     type = "response"
