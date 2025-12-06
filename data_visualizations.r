@@ -254,33 +254,35 @@ ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) 
 
 # Hypo
 
-# (1) - Age:
+# (1) - Age: This is the age of the patient in the context of the hypo dataset. 
 
-# (2) - TSH_reading:
+# (2) - TSH_reading: TSH or thyorid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hypo dataset. 
 
 # (3) - T3_reading: Triiodothyronine or T3_reading regulates and controls factors like metabolism, growth, and heartrate. 
 
-# (4) - T4_reading:
+# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot.  
+          #This is in the context of the hypo dataset.
 
-# (5) - thyrox_util_rate_T4U_reading:
+# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the t4 can be bounded to various proteins compared to those that are not bounded to various proteins, this is in the context of the hypo dataset. 
 
-# (6) - FTI_reading:
+# (6) - FTI_reading: This is known as the free thyroxine indenx, as the name suggests it is related to the T4. This reading measures the amount of T4. 
 
 # =============================================
 
 # Hyper 
 
-# (1) - Age:
+# (1) - Age: This is the age of the patient in the context of the hyper dataset.
 
-# (2) - TSH_reading:
+# (2) - TSH_reading: TSH or thyorid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hyper dataset. 
 
-# (3) - T3_reading:
+# (3) - T3_reading: Triiodothyronine or T3_reading regulates and controls factors like metabolism, growth, and heartrate in the context of the hyper dataset. 
 
-# (4) - T4_reading:
+# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot.  
+          #This is in the context of the hyper dataset. 
 
-# (5) - thyrox_util_rate_T4U_reading:
+# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the t4 can be bounded to various proteins compared to those that are not bounded to various proteins, this is in the context of the hyper dataset. 
 
-# (6) - FTI_reading:
+# (6) - FTI_reading: This is known as the free thyroxine indenx, as the name suggests it is related to the T4. This reading measures the amount of T4.
 
 # --------------------------------------------
 
