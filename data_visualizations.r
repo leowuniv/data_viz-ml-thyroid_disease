@@ -797,12 +797,38 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 # --------------------------------------------
 # {R9}
 
-# Comparison of Hypothyroid vs Hyperthyroid
+# Comparison of Hypothyroid vs Hyperthyroid [Higher Quality Statistical Visualizations]
+
+# 1. Medication Factor - Testing for Prescribed Medication
+
+
 
 # --------------------------------------------
 
 # --------------------------------------------
 # {R10}
+
+# Statistical Plots | Hypothesis Testing
+
+# Based on our previous plots of the variables and our ML implementation; we analyzed some of the greatest variables that may increase or reduce the main contributing possibilities of Thyroid Disease.
+# For instance in our ML model for Hyper:
+# presc_anthyroid_meds : -1.279981556 | and | presc_thyroxine : 1.359800950
+# While for Hypo:
+# presc_anthyroid_meds : 0.446475096 | and | presc_thyroxine  : 1.247184967
+# which leaves us to question whether giving certain prescriptions actually help reduce or hinder and worsen Thyroid Disease even further.
+
+# [Note: Higher ML value means that it has greater importance when classifying whether someone has thyroid disease or not; Lower ML values (negative) are the opposite or vice-versa.]
+
+# ============================================================
+
+# 1. Question: Medication 
+# Null Hypothesis (H_0):
+# Alt. Hypothesis (H_a): 
+
+# --------------------------------------------
+
+# --------------------------------------------
+# {R11}
 
 
 # --------------------------------------------
