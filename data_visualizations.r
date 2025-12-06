@@ -119,7 +119,6 @@ hyper_categorical_data
 # [INDEX For Graphs]:
 
 # Green --> Numerical Data Visualizations
-# Blue --> Categorical Data Visualizations
 # "hypothyroid" --> = "red",
 # "hyperthyroid"--> = "blue"
 
