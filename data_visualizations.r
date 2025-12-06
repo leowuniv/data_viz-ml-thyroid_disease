@@ -67,10 +67,229 @@ names(allhypo)
 # {R4}
 # Testing each variable in Hypothyroid against ThyroidClass
 
+# NOTE: Do NOT need to test "record_id" --> tracking ID, not measurement form
+numeric_vars_hypo <- c("age", "TSH_reading", "T3_reading", "T4_reading", "thyrox_util_rate_T4U_reading", "FTI_reading") # 6 total
+
+categorical_vars_hypo <- c("sex", "presc_thyroxine", "queried_why_on_thyroxine", "presc_anthyroid_meds", "sick", "pregnant", "thyroid_surgery", "radioactive_iodine_therapyI131", "query_hypothyroid", "query_hyperthyroid", "lithium", "goitre", "tumor", "hypopituitarism", "psych_condition", "TSH_measured", "T3_measured", "T4_measured", "thyrox_util_rate_T4U_measured", "FTI_measured", "ref_src", "ThyroidClass") 
+# 22 total ; exclude "record_ID"
+
+# Check if numeric/cat data from allhypo is displayed in a table
+hypo_numeric_data <- allhypo[ , numeric_vars_hypo]
+#hypo_numeric_data
+
+hypo_categorical_data <- allhypo[ , categorical_vars_hypo]
+hypo_categorical_data
+
+# -----------------------------------------------------------------------
+
+# Testing each variable in Hyperthyroid against ThyroidClass
+
+# NOTE: Do NOT need to test "record_id" --> tracking ID, not measurement form
+numeric_vars_hyper <- c("age", "TSH_reading", "T3_reading", "T4_reading", "thyrox_util_rate_T4U_reading", "FTI_reading") # 6 total
+
+categorical_vars_hyper <- c("sex", "presc_thyroxine", "queried_why_on_thyroxine", "presc_anthyroid_meds", "sick", "pregnant", "thyroid_surgery", "radioactive_iodine_therapyI131", "query_hypothyroid", "query_hyperthyroid", "lithium", "goitre", "tumor", "hypopituitarism", "psych_condition", "TSH_measured", "T3_measured", "T4_measured", "thyrox_util_rate_T4U_measured", "FTI_measured", "ref_src", "ThyroidClass") 
+# 22 total ; exclude "record_ID"
+
+# Check if numeric/cat data from allhypo is displayed in a table
+hyper_numeric_data <- allhyper[ , numeric_vars_hyper]
+#hyper_numeric_data
+
+hyper_categorical_data <- allhyper[ , categorical_vars_hyper]
+hyper_categorical_data
+
 # --------------------------------------------
 
 # --------------------------------------------
 # {R5}
-# Testing each variable in Hypothyroid against ThyroidClass
+# (1) General Visualizations (Simple) | Observing numeric Variables in Hypothyroid & Hyperthyroid
+
+# Testing each num_variable in Hypothyroid & Hyperthyroid against ThyroidClass --> Can be looped (optional) less precision/choice
+
+# ===========================================================
+
+# [INDEX For Graphs]:
+
+# Green --> Numerical Data Visualizations
+# Blue --> Categorical Data Visualizations
+# "hypothyroid" --> = "red",
+# "hyperthyroid"--> = "blue"
+
+# ===========================================================
+
+# [Convert to numeric values from char]
+
+# 1. Testing Age Variable vs. Thyroid Disease Result
+
+# Hypo
+
+# Outlier at age --> 400+? (possible 40) Error in Data set recording provided
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(age))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Age vs Hypothyroidism - Thyroid Disease",
+       x="Hypothyroid sub-type disease",
+       y="Age")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(age))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Age vs Hyperthyroidism - Thyroid Disease",
+       x="Hyperthyroid sub-type disease",
+       y="Age")
+
+# ===========================================================
+
+# 2. Testing TSH_reading vs. Thyroid Disease Result
+
+# Hypo
+
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Thyroid-Stimulating Hormone (TSH) vs Hypothyroidism - Thyroid Disease)", 
+       x="Hypothyroid sub-type disease",
+       y="TSH")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Thyroid-Stimulating Hormone (TSH) vs Hyperthyroidism - Thyroid Disease)", 
+       x="Hyperthyroid sub-type disease",
+       y="TSH")
+
+# ===========================================================
+
+# 3. Testing T3_reading vs. Thyroid Disease Result
+
+# Hypo
+
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Triiodothyronine (T3_reading) vs Hypothyroidism - Thyroid Disease)", 
+       x="Hypothyroid sub-type disease",
+       y="T3-Reading")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Triiodothyronine (T3_reading) vs Hyperthyroidism - Thyroid Disease)", 
+       x="Hyperthyroid sub-type disease",
+       y="T3-Reading")
+
+# ===========================================================
+
+# 4. Testing T4_reading vs. Thyroid Disease Result
+
+# Hypo
+
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Thyroxine (T4_reading) vs Hypothyroidism - Thyroid Disease)", 
+       x="Hypothyroid sub-type disease",
+       y="T4-Reading")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Thyroxine (T4_reading) vs Hyperthyroidism - Thyroid Disease)", 
+       x="Hyperthyroid sub-type disease",
+       y="T4-Reading")
+
+# ===========================================================
+
+# 5. Testing thyrox_util_rate_T4U_reading vs. Thyroid Disease Result
+
+# Hypo
+
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Thyroxine Utilization Rate (thyrox_util_rate_T4U_reading) vs Hypothyroidism - Thyroid Disease)", 
+       x="Hypothyroid sub-type disease",
+       y="Thyroxine utilization rate")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Thyroxine Utilization Rate (thyrox_util_rate_T4U_reading) vs Hyperthyroidism - Thyroid Disease)", 
+       x="Hyperthyroid sub-type disease",
+       y="Thyroxine utilization rate")
+
+# ===========================================================
+
+# 6. Testing FTI_reading vs. Thyroid Disease Result
+
+# Hypo
+
+ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
+  geom_boxplot(fill = "green", color = "darkred") +
+  labs(title="Free Thyroxine Index (FTI_reading) vs Hypothyroidism - Thyroid Disease)", 
+       x="Hypothyroid sub-type disease",
+       y="FTI-Reading")
+
+# Hyper
+
+ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
+  geom_boxplot(fill = "green", color = "darkblue") +
+  labs(title="Free Thyroxine Index (FTI_reading) vs Hyperthyroidism - Thyroid Disease)", 
+       x="Hyperthyroid sub-type disease",
+       y="FTI-Reading")
+
+# ===========================================================
+# --------------------------------------------
+
+# --------------------------------------------
+# {R6}
+# Brief Analysis (Numerical Variables):
+
+# Hypo
+
+# (1) - Age:
+
+# (2) - TSH_reading:
+
+# (3) - T3_reading: Triiodothyronine or T3_reading regulates and controls factors like metabolism, growth, and heartrate. 
+
+# (4) - T4_reading:
+
+# (5) - thyrox_util_rate_T4U_reading:
+
+# (6) - FTI_reading:
+
+# =============================================
+
+# Hyper 
+
+# (1) - Age:
+
+# (2) - TSH_reading:
+
+# (3) - T3_reading:
+
+# (4) - T4_reading:
+
+# (5) - thyrox_util_rate_T4U_reading:
+
+# (6) - FTI_reading:
+
+# --------------------------------------------
+
+# --------------------------------------------
+# {R7}
+
+
+# --------------------------------------------
+
+# --------------------------------------------
+# {R8}
+
+
+# --------------------------------------------
+
+# --------------------------------------------
+# {R9}
+
 
 # --------------------------------------------
