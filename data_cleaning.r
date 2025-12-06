@@ -3,20 +3,20 @@
 # same set over all the databases) where they are mostly numeric or Boolean valued attributes.
 
 #importing datasets
-allhypo <- read.csv("allhypo.data", header = F) #import of allhypo.data file
-allhypo_test <- read.csv("allhypo.test", header = F)
-allhyper <- read.csv("allhyper.data", header = F)
-allhyper_test <- read.csv("allhyper.test", header = F)
-allbp <- read.csv("allbp.data", header = F)
-allrep <- read.csv("allrep.data", header = F)
-dis <- read.csv("dis.data", header = F)
-hypothyroid <- read.csv("hypothyroid.data", header = F)
-new_thyroid <- read.csv("new-thyroid.data", header = F) 
-sick_euthyroid <- read.csv("sick-euthyroid.data", header = F)
-sick <- read.csv("sick.data", header = F)
-thyroid0387 <- read.csv("thyroid0387.data", header = F)
-ann_test <- read.csv("ann-test.data", header = F)
-ann_train <- read.csv("ann-train.data", header = F)
+allhypo <- read.csv("datasets/allhypo.data", header = F) #import of allhypo.data file
+allhypo_test <- read.csv("datasets/allhypo.test", header = F)
+allhyper <- read.csv("datasets/allhyper.data", header = F)
+allhyper_test <- read.csv("datasets/allhyper.test", header = F)
+allbp <- read.csv("datasets/allbp.data", header = F)
+allrep <- read.csv("datasets/allrep.data", header = F)
+dis <- read.csv("datasets/dis.data", header = F)
+hypothyroid <- read.csv("datasets/hypothyroid.data", header = F)
+new_thyroid <- read.csv("datasets/new-thyroid.data", header = F) 
+sick_euthyroid <- read.csv("datasets/sick-euthyroid.data", header = F)
+sick <- read.csv("datasets/sick.data", header = F)
+thyroid0387 <- read.csv("datasets/thyroid0387.data", header = F)
+ann_test <- read.csv("datasets/ann-test.data", header = F)
+ann_train <- read.csv("datasets/ann-train.data", header = F)
 
 # function to rename 30-column datasets as they all have the same column headers
 rename_30col <- function(dataset){
