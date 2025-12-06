@@ -5,6 +5,9 @@
 
 head(allhypo)
 head(allhyper)
+
+head(remove_nas_allhypo) # cleaned for NAs
+head(remove_nas_allhyper) # cleaned for NAs
 # --------------------------------------------
 
 # --------------------------------------------
@@ -52,15 +55,21 @@ library(ggplot2)
 # --------------------------------------------
 # {R3}
 # Examining variables for Thyroid Class (hypo vs hyper)
+# --> Update: Use files accounting for "?"/NAs
 
-unique(allhypo$ThyroidClass) # "negative","compensated hypothyroid", "primary hypothyroid", "secondary hypothyroid" | where negative = no Thyroid Disease
-unique(allhyper$ThyroidClass) # "negative", "hyperthyroid", "T3 toxic" --> (T3 toxic hyperthyroidism, or T3 toxicosis), "goitre" (too big/enlarged of gland --> hyperthyroid too much hormone) | where negative = no Thyroid Disease
+unique(remove_nas_allhypo$ThyroidClass) # "negative","compensated hypothyroid", "primary hypothyroid", "secondary hypothyroid" | where negative = no Thyroid Disease
+unique(remove_nas_allhyper$ThyroidClass) # "negative", "hyperthyroid", "T3 toxic" --> (T3 toxic hyperthyroidism, or T3 toxicosis), "goitre" (too big/enlarged of gland --> hyperthyroid too much hormone) | where negative = no Thyroid Disease
 
 print("==================================================================") # spacer
 
-names(allhyper)
-names(allhypo)
+names(remove_nas_allhyper)
+names(remove_nas_allhypo)
 # -->  [1] "age" "sex" [3] "presc_thyroxine" "queried_why_on_thyroxine" [5] "presc_anthyroid_meds" "sick" [7] "pregnant" "thyroid_surgery" [9] "radioactive_iodine_therapyI131" "query_hypothyroid" [11] "query_hyperthyroid" "lithium" [13] "goitre" "tumor" [15] "hypopituitarism" "psych_condition" [17] "TSH_measured" "TSH_reading" [19] "T3_measured" "T3_reading" [21] "T4_measured" "T4_reading" [23] "thyrox_util_rate_T4U_measured" "thyrox_util_rate_T4U_reading" [25] "FTI_measured" "FTI_reading" [27] "ref_src" "ThyroidClass" [29] "record_id"
+
+str(allhypo)
+str(allhyper)
+str(remove_nas_allhyper)
+str(remove_nas_allhypo)
 # --------------------------------------------
 
 # --------------------------------------------
@@ -74,10 +83,10 @@ categorical_vars_hypo <- c("sex", "presc_thyroxine", "queried_why_on_thyroxine",
 # 22 total ; exclude "record_ID"
 
 # Check if numeric/cat data from allhypo is displayed in a table
-hypo_numeric_data <- allhypo[ , numeric_vars_hypo]
+hypo_numeric_data <- remove_nas_allhypo[ , numeric_vars_hypo]
 #hypo_numeric_data
 
-hypo_categorical_data <- allhypo[ , categorical_vars_hypo]
+hypo_categorical_data <- remove_nas_allhypo[ , categorical_vars_hypo]
 hypo_categorical_data
 
 # -----------------------------------------------------------------------
@@ -91,10 +100,10 @@ categorical_vars_hyper <- c("sex", "presc_thyroxine", "queried_why_on_thyroxine"
 # 22 total ; exclude "record_ID"
 
 # Check if numeric/cat data from allhypo is displayed in a table
-hyper_numeric_data <- allhyper[ , numeric_vars_hyper]
+hyper_numeric_data <- remove_nas_allhyper[ , numeric_vars_hyper]
 #hyper_numeric_data
 
-hyper_categorical_data <- allhyper[ , categorical_vars_hyper]
+hyper_categorical_data <- remove_nas_allhyper[ , categorical_vars_hyper]
 hyper_categorical_data
 
 # --------------------------------------------
@@ -123,7 +132,7 @@ hyper_categorical_data
 # Hypo
 
 # Outlier at age --> 400+? (possible 40) Error in Data set recording provided
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(age))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(age))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Age vs Hypothyroidism - Thyroid Disease",
        x="Hypothyroid sub-type disease",
@@ -131,7 +140,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(age))) +
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(age))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(age))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Age vs Hyperthyroidism - Thyroid Disease",
        x="Hyperthyroid sub-type disease",
@@ -143,7 +152,7 @@ ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(age))) +
 
 # Hypo
 
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Thyroid-Stimulating Hormone (TSH) vs Hypothyroidism - Thyroid Disease)", 
        x="Hypothyroid sub-type disease",
@@ -151,7 +160,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Thyroid-Stimulating Hormone (TSH) vs Hyperthyroidism - Thyroid Disease)", 
        x="Hyperthyroid sub-type disease",
@@ -163,7 +172,7 @@ ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(TSH_reading))) +
 
 # Hypo
 
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Triiodothyronine (T3_reading) vs Hypothyroidism - Thyroid Disease)", 
        x="Hypothyroid sub-type disease",
@@ -171,7 +180,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Triiodothyronine (T3_reading) vs Hyperthyroidism - Thyroid Disease)", 
        x="Hyperthyroid sub-type disease",
@@ -183,7 +192,7 @@ ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T3_reading))) +
 
 # Hypo
 
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Thyroxine (T4_reading) vs Hypothyroidism - Thyroid Disease)", 
        x="Hypothyroid sub-type disease",
@@ -191,7 +200,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Thyroxine (T4_reading) vs Hyperthyroidism - Thyroid Disease)", 
        x="Hyperthyroid sub-type disease",
@@ -203,7 +212,7 @@ ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(T4_reading))) +
 
 # Hypo
 
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Thyroxine Utilization Rate (thyrox_util_rate_T4U_reading) vs Hypothyroidism - Thyroid Disease)", 
        x="Hypothyroid sub-type disease",
@@ -211,7 +220,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_readin
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_reading))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Thyroxine Utilization Rate (thyrox_util_rate_T4U_reading) vs Hyperthyroidism - Thyroid Disease)", 
        x="Hyperthyroid sub-type disease",
@@ -223,7 +232,7 @@ ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(thyrox_util_rate_T4U_readi
 
 # Hypo
 
-ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
+ggplot(remove_nas_allhypo, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
   geom_boxplot(fill = "green", color = "darkred") +
   labs(title="Free Thyroxine Index (FTI_reading) vs Hypothyroidism - Thyroid Disease)", 
        x="Hypothyroid sub-type disease",
@@ -231,7 +240,7 @@ ggplot(allhypo, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
 
 # Hyper
 
-ggplot(allhyper, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
+ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) +
   geom_boxplot(fill = "green", color = "darkblue") +
   labs(title="Free Thyroxine Index (FTI_reading) vs Hyperthyroidism - Thyroid Disease)", 
        x="Hyperthyroid sub-type disease",
