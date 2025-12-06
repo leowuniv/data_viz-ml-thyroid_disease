@@ -33,8 +33,8 @@ The topics that we would want to cover are definitely related to machine learnin
 
 ----------------
 
-### Data-Viz Slides 💼:
-### 2-Page Report 📄:
+### Data-Viz Slides 💼: See BruinLearn
+### 2-Page Report 📄: See BruinLearn
 
 ----------------
 
