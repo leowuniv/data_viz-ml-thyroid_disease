@@ -801,9 +801,85 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # Comparison of Hypothyroid vs Hyperthyroid [Higher Quality Statistical Visualizations]
 
+# =========================================
+
+#install.packages("ggrepel") # INSTALL IF NEEDED  
+library(ggrepel) # used to prevent text-overlap [https://ggrepel.slowkow.com/]
+
+# =========================================
+
+# 0. ML Analysis For Highest Importance Classifying Thyroid Disease
+
+# [Note: Coef. values were gathered from ML model; "." = not used in model -->                                          Ex: T3_measured . and T4_measured . ]
+
+# Construct data.frame inputting values given
+
+ml_coef_df <- data.frame(
+  variables = c("age","sexM","presc_thyroxine","queried_why_on_thyroxine",
+          "presc_anthyroid_meds","sick","pregnant","thyroid_surgery",
+          "radioactive_iodine_therapyI131","query_hypothyroid",
+          "query_hyperthyroid", "lithium","goitre","tumor","hypopituitarism",
+          "psych_condition", "TSH_reading","T3_reading","T4_reading",
+          "thyrox_util_rate_T4U_reading", "FTI_reading"),
+  hyper_ml_coef = c(-0.006508914, 0.592310004, 1.359800950, 1.572507679, 
+                    -1.279981556, -0.212045527, 1.197738090, 0.528055152,
+                    -1.311378550, 0.855032378, -0.387778238, 0.334824702,
+                    0.339558648, 0.023676527, 0.003350999, 0.759104138,
+                    0.004636063, -0.646673359, -0.015782152, 1.654273090,
+                    -0.028433950),
+  hypo_ml_coef = c(0.001644279, 0.360173554, 1.247184967, -0.805817772,
+                   0.446475096, -0.381574140, 1.155120158, 4.308487786,
+                   0.866294000, -0.437844531, -0.146093108, -0.250629636,
+                   1.517338999, -0.316632434, 2.574029211, 0.026682689,
+                   -0.068778607, 0.346691317, 0.010000982, -0.878012799,
+                   0.016010469)
+)
+
+#ml_coef_df #check table
+
+ml_scatter <- ggplot(ml_coef_df, aes(x = hyper_ml_coef, y = hypo_ml_coef)) +
+  geom_point(color = "black", size = 1) +
+  geom_text_repel(aes(label = variables), size = 3) +
+  labs(
+    title = "Variable Importance Effectiveness (Based on ML): Hypothyroid vs Hyperthyroid",
+    x = "Hyperthyroid coefficient",
+    y = "Hypothyroid coefficient"
+  )
+
+ml_scatter + 
+  theme_bw() # ggplot2 themes: [https://ggplot2.tidyverse.org/reference/ggtheme.html]
+
+# Analysis: Observed that there seemed to be more variables leading to greater importance and affect in hyperthyroid compared to hypothyroid although the hypothyroid coefficient contains more outliers such as (4.308487786) for thyroid_surgery which means that thyroid surgery is a leading factor in result of those who have the hypothyroid disease. Meanwhile, it is intriguing that thyroid_surgery only has a coefficient importance of 0.528055152. This leads us to further research statistical questions and answers that certain variables affect certain types of Thyroid disease (i.e. Hypo and Hyper-thyroid) particularly. 
+
+#  ───────────────────────────────────────────────────────────────
+
 # 1. Medication Factor - Testing for Prescribed Medication
 
+combine_presc_thyroxine <- rbind(
+  remove_nas_allhypo[, c("presc_thyroxine", "ThyroidClass")],
+  remove_nas_allhyper[, c("presc_thyroxine", "ThyroidClass")]
+)
 
+#combine_presc_thyroxine # make sure combined properly
+
+# Side bar graph instead of stacked ~ ref 2.
+ggplot(combine_presc_thyroxine, aes(x = presc_thyroxine, fill = ThyroidClass)) +
+  geom_bar(position = "dodge", color = "slategrey") +
+  labs(
+    title = "Prescribed Thyroxine vs Thyroid Subtype (Hypo vs Hyper)",
+    x = "Patient Prescribed Thyroxine",
+    y = "Count",
+    fill = "Thyroid (hypo vs hyper) Subtype"
+  ) +
+  theme_bw()
+
+# Analysis: In the plot we can observe in the side to side bar graph (after observing results from both categorical plots - refer to 2. in the categorical graphs) that the thyroxine prescribed medication is indeed effective in preventing thyroid disease types hypothyroid and hyperthyroid. Those were were not prescribed thyroxine mostly recorded negative for either disease but there were cases of development of compensated hypothyroid, hyperthyroid, and primary hypothyroid.
+
+#  ───────────────────────────────────────────────────────────────
+
+# 2. Surgery?
+
+#  ───────────────────────────────────────────────────────────────
 
 # --------------------------------------------
 
