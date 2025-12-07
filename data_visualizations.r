@@ -888,6 +888,10 @@ ggplot(combine_presc_thyroxine, aes(x = presc_thyroxine, fill = ThyroidClass)) +
 
 # Statistical Plots | Hypothesis Testing
 
+# Reference to Hypothesis Testing in R: https://www.geeksforgeeks.org/r-language/hypothesis-testing-in-r-programming/
+
+# ============================================================
+
 # Based on our previous plots of the variables and our ML implementation; we analyzed some of the greatest variables that may increase or reduce the main contributing possibilities of Thyroid Disease.
 # For instance in our ML model for Hyper:
 # presc_anthyroid_meds : -1.279981556 | and | presc_thyroxine : 1.359800950
@@ -899,7 +903,18 @@ ggplot(combine_presc_thyroxine, aes(x = presc_thyroxine, fill = ThyroidClass)) +
 
 # ============================================================
 
+# Confidence Interval Test
+
+# 0. ML attributes test
+
+print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
+
+#  ───────────────────────────────────────────────────────────────
+
+# Chi-Square test (categorical variables)
+
 # 1. Question: Medication 
+
 # Null Hypothesis (H_0):
 # Alt. Hypothesis (H_a): 
 
@@ -907,6 +922,7 @@ ggplot(combine_presc_thyroxine, aes(x = presc_thyroxine, fill = ThyroidClass)) +
 
 # --------------------------------------------
 # {R11}
+
 
 
 # --------------------------------------------
