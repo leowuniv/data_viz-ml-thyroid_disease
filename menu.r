@@ -4,6 +4,29 @@
 # IGNORE FILE: (FUTURE IMPLEMENTATION IF TIME PERMITS)
 
 
+```{r}
+
+# Menu Printout (Condensed Version)
+
+print("▀█▀ █░█ █▄█ █▀█ █▀█ █ █▀▄   █░█ █ ▀█")
+print("░█░ █▀█ ░█░ █▀▄ █▄█ █ █▄▀   ▀▄▀ █ █▄")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
