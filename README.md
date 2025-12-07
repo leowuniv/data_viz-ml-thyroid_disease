@@ -64,5 +64,5 @@ Organizers/Fonts/Simplicity Visuals
 - Emoji Text: https://emojipedia.org/
 - Slides Tool: https://workspace.google.com/products/slides/
 
-+ [See any refernces located inside the .r files listed as __comments__]
+### + [See any references located inside the .r files listed as __comments__]
 ----------------
