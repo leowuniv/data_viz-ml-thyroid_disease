@@ -54,10 +54,17 @@ rename_30col <- function(dataset){
   names(dataset)[names(dataset) == "V29"] <- "ref_src"
   
   # split the strings in col30 using splitter ".|"
+  # set fixed= TRUE since every element in the column has ".|" as the splitter
+  # Link to source for strsplit() function: https://builtin.com/articles/strsplit
+  # slightly different from the str_split() function from stringr package taught in lecture
+  # as the R built in method does not have the pattern argument; instead uses argument split 
   split_col_30 <- strsplit(dataset$V30, split = ".|", fixed = TRUE)
   
-  ThyroidClass <- sapply(split_col_30, function(x) x[1])
-  record_id <- as.numeric(sapply(split_col_30, function(x) x[2]))
+  # apply simple lambda functions that get the proper split for the new columns
+  # ThyroidClass -> first element of the split; character type
+  # record_id -> second element of the split; numeric type (has to be converted from char first)
+  ThyroidClass <- vapply(split_col_30, FUN = function(x) x[1], FUN.VALUE = character(1))
+  record_id <- vapply(split_col_30, FUN = function(x) as.numeric(x[2]), FUN.VALUE = numeric(1))
   
   # drop column 30 
   dataset <- subset(dataset, select = -V30)
@@ -66,6 +73,7 @@ rename_30col <- function(dataset){
   dataset$ThyroidClass <- ThyroidClass
   dataset$record_id <- record_id
   
+  # return the updated names for the 30 column datasets
   return(dataset)
 }
 
@@ -98,6 +106,7 @@ rename_26col <- function(dataset){
   names(dataset)[names(dataset) == "V25"] <- "TBG_measured"
   names(dataset)[names(dataset) == "V26"] <- "TBG_reading"
   
+  # return the updated names for the 26 column datasets
   return(dataset)
 }
 
