@@ -931,16 +931,70 @@ ggplot(combine_presc_anthyroid, aes(x = presc_anthyroid_meds, fill = ThyroidClas
 
 # 0. ML attributes test
 
-print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
+#print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
 
 #  ───────────────────────────────────────────────────────────────
 
 # Chi-Square test (categorical variables)
+# Reference --> https://www.geeksforgeeks.org/r-language/chi-square-test-in-r/
 
-# 1. Question: Medication 
+# 1. Question: Medication - Thyroxine
+# Does the use of medication, prescribed Thyroxine, actually affect the result of Thyroid Disease?
 
-# Null Hypothesis (H_0):
-# Alt. Hypothesis (H_a): 
+# Null Hypothesis (H_0): The Thyroxine medication works
+# Alt. Hypothesis (H_a): The Thyroxine medication doesn't work
+# significance-level: auto tested at 5%
+
+# From previous: # Skipped "Installing the libraries" --> Install if needed
+combine_presc_thyroxine <- rbind(
+  remove_nas_allhypo[, c("presc_thyroxine", "ThyroidClass")],
+  remove_nas_allhyper[, c("presc_thyroxine", "ThyroidClass")]
+)
+
+# "Creating a Contingency Table from Survey Data"
+
+combined_thyroxine <- data.frame(combine_presc_thyroxine$ThyroidClass, combine_presc_thyroxine$presc_thyroxine)
+
+combined_thyroxine <- table(combine_presc_thyroxine$ThyroidClass, combine_presc_thyroxine$presc_thyroxine)
+
+print(combined_thyroxine)
+
+# "Applying Chi-Square Test"
+chi_sq_test_thyroxine <-chisq.test(combined_thyroxine)
+chi_sq_test_thyroxine
+
+print("───────────────────────────────────────────────────────────────") # spacer
+
+# Analysis: Since we have a p-value of 0.004355 which is very low, (0.004355 > 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Thyroxine medication really works in limited and preventing Thyroid Disease.
+
+#  ───────────────────────────────────────────────────────────────
+
+# 2. Question: Medication - Anthyroid meds
+# Does the use of medication, prescribed Anthyroid Meds, actually affect the result of Thyroid Disease?
+
+# Null Hypothesis (H_0): The Anthyroid medication works
+# Alt. Hypothesis (H_a): The Anthyroid medication doesn't work
+# significance-level: auto tested at 5%
+
+combine_presc_anthyroid <- rbind(
+  remove_nas_allhypo[, c("presc_anthyroid_meds", "ThyroidClass")],
+  remove_nas_allhyper[, c("presc_anthyroid_meds", "ThyroidClass")]
+)
+
+# "Creating a Contingency Table from Survey Data"
+combined_anthyroid <- data.frame(combine_presc_anthyroid$ThyroidClass, combine_presc_anthyroid$presc_anthyroid_meds)
+
+combined_anthyroid <- table(combine_presc_anthyroid$ThyroidClass, combine_presc_anthyroid$presc_anthyroid_meds)
+
+print(combined_anthyroid)
+
+# "Applying Chi-Square Test"
+chi_sq_test_anthyroid <-chisq.test(combined_anthyroid)
+chi_sq_test_anthyroid
+
+print("───────────────────────────────────────────────────────────────") # spacer
+
+# Analysis: Since we have a p-value of 0.02203 which is very low, (0.02203 > 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Anthyroid medication really works in limited and preventing Thyroid Disease. However, it appears that prescribed Anthyroid may not be as effective as those who are prescribed Thyroxine.
 
 # --------------------------------------------
 
