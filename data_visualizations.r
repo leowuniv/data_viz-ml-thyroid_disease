@@ -254,35 +254,67 @@ ggplot(remove_nas_allhyper, aes(x = ThyroidClass, y = as.numeric(FTI_reading))) 
 
 # Hypo
 
-# (1) - Age: This is the age of the patient in the context of the hypo dataset. 
+# table(remove_nas_allhypo$ThyroidClass)
 
-# (2) - TSH_reading: TSH or thyorid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hypo dataset. 
+# Note: For the patients with hypothyroid, there is only one measured with secondary hypothyroid. Since there's inadequate data on patients with secondary hypothyroid, this subtype of 
+#       hypothyroidism will be excluded in the following analyses.
+
+# (1) - Age: This is the age of the patient in the context of the hypo dataset. As previously noted, there's an outlier of an age over 400, which is likely a simple data entry error.  
+# The age distributions across the hypothyroid subtypes are largely the same, where they impact virtually every age group, but most common in middle-aged individuals around 40-60 years of age.
+# These findings indicate that any age group can be impacted, but most commonly found among those in their 40s to 60s.
+
+# (2) - TSH_reading: TSH or thyroid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hypo dataset. 
+# Those with primary hypothyroid had a significant spike in TSh levels, with the median patient experiencing a level of 50. Compensated hypothyroid patients saw a similar spike, though
+# not nearly as proununced with the median level of roughly 10, as opposed to the typical patient without hypothyroid with a typical TSH of around 0. Having high amounts of TSH
+# is a clear indicator that the patient has some form of hypothyroid disease.
 
 # (3) - T3_reading: Triiodothyronine or T3_reading regulates and controls factors like metabolism, growth, and heartrate. 
+# Patients with hypothyroid show lower T3 levels, as opposed to patients without. The normal, healthy range hovering just around a T3 level of 2, while those with compensated hypothroid
+# had a median level slightly lower. Patients with primary hypothyroid experience a significantly lower T3 level of less than 1, signifying that a lack of T3 can serve as another 
+# indicator of a patient having hypothyroid disease. 
 
-# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot.  
-          #This is in the context of the hypo dataset.
+# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot. This is in the context of the hypo dataset.
+# The same conclusions of the T3 reading can be applied to the T4 reading as patients with compensated hypothyroid and primary hypothyroid patients experiencing lower levels of T4 than patients
+# without, with the impact on primary hypothyroid being significantly larger.
 
-# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the t4 can be bounded to various proteins compared to those that are not bounded to various proteins, this is in the context of the hypo dataset. 
+# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the T4U can be bounded to various proteins compared to those that are not bounded to various 
+# proteins, this is in the context of the hypo dataset. 
+# T4U readings across all hypothyroid groups remain relatively consistent. The similarity indicates that T4U readings may not necessarily be the most helpful in diagnosing 
+# hypothyroidism, especially compared to the previous hormone measurements. 
 
-# (6) - FTI_reading: This is known as the free thyroxine indenx, as the name suggests it is related to the T4. This reading measures the amount of T4. 
+# (6) - FTI_reading: This is known as the free thyroxine index, as the name suggests it is related to the T4. This reading measures the amount of T4. 
+# As expected, the FTI reading follows a similar conclusion to the T4 readings, with very similar value ranges as well. Patients with hypothyroid experienced lower levels of T4 than patients
+# without, with the impact on primary hypothyroid being significantly larger 
 
 # =============================================
 
 # Hyper 
 
-# (1) - Age: This is the age of the patient in the context of the hyper dataset.
+# table(remove_nas_allhypo$ThyroidClass)
 
-# (2) - TSH_reading: TSH or thyorid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hyper dataset. 
+# (1) - Age: This is the age of the patient in the context of the hypo dataset. As previously noted, there's an outlier of an age over 400, which is likely a simple data entry error.
+# Similarly to hypothyroidism, hyperthyroidism affects all age groups, with the majority of patients falling within the middle-aged group.
+
+# (2) - TSH_reading: TSH or thyroid stimulating hormone. This reading determines the level of the TSH in your body, in the context of the hyper dataset. 
+# Unlike the hypothyroid TSH readings, all subtypes of hyperthyroid diseases followed the same near zero TSH levels of patients with no thyroid disease. While TSH levels can help 
+# determine whether a patient likely has hypothyroid disease, it does not help with hyperthyroid patients.
 
 # (3) - T3_reading: Triiodothyronine or T3_reading regulates and controls factors like metabolism, growth, and heartrate in the context of the hyper dataset. 
+# Patients with hyperthyroid saw an opposite effect on T3 levels than hypothyroid patients: those with a type of hyperthyroid experienced significantly higher levels of T3 levels than
+# the negative control group. Higher than typical T3 levels can thus be used as an indiciator of hyperthyroid disease.
 
-# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot.  
-          #This is in the context of the hyper dataset. 
+# (4) - T4_reading: T4 or thyroxine is another test used to find out the levels of thyroxine in your body and a lot of the time work with T3 a lot. This is in the context of the hyper dataset. 
+# The same conclusions of the T3 reading can be applied to the T4 reading as patients with hyperthyroid experienced higher levels of T4.
 
-# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the t4 can be bounded to various proteins compared to those that are not bounded to various proteins, this is in the context of the hyper dataset. 
+# (5) - thyrox_util_rate_T4U_reading: This is the Thyroxine Utilization Rate, it measures how much of the t4 can be bounded to various proteins compared to those that are not bounded to various 
+# proteins, this is in the context of the hyper dataset. 
+# The goitre subtype shows the highest level of T4U levels, with the median hovering around 1.2, while the median of the other groups were all below a level of T4U level of 1. 
+# T4U can thus be helpful in determining whether patients with hyperthyroid are specifically  of the goitre subtype.
 
-# (6) - FTI_reading: This is known as the free thyroxine indenx, as the name suggests it is related to the T4. This reading measures the amount of T4.
+# (6) - FTI_reading: This is known as the free thyroxine index, as the name suggests it is related to the T4. This reading measures the amount of T4.
+# The FTI reading for hyperthyroid doesn't perfectly mirror the T4 readings like those for the hypothyroid readings. However, they are still similar with hyperthyroid patients having 
+# significantly higher levels of FTI than the other groups, while the other subtypes of hyperthyroid falling close to the levels of patients without hyperthyroid. This indiactes 
+# that the FTI reading can be helpful in classifying patients with hyperthyroid of simply having hyperthyroid. 
 
 # --------------------------------------------
 
@@ -702,23 +734,26 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # Hypo
 
-# (1) - Sex:
+# (1) - Sex: This is the sex of the patient in the context of the hypo dataset.
 
-# (2) - presc_thyroxine: Thyroxine is a medication that treats Thyroid Disease (primarily hypothyroidism); It can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid disease compared to those who are not. Those who tested positive for thyroid disease mainly had "compensated hypothyroid" and "primary hypothyroid". 
+# (2) - presc_thyroxine: Thyroxine is a medication that treats Thyroid Disease (primarily hypothyroidism). This notes whether patients were prescribed thyroxine (t) or not (f).
+# It can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid disease compared to those who are not. 
+# Those who tested positive for thyroid disease mainly had "compensated hypothyroid" and "primary hypothyroid". 
 
-# (3) - queried_why_on_thyroxine:
+# (3) - queried_why_on_thyroxine: This notes whether the patient was queried about why they were taking thyroxine (t) or not (f).
 
-# (4) - presc_anthyroid_meds:
+# (4) - presc_anthyroid_meds: This notes whether the patient was prescribed antyhroid medication (t) or not (f). 
 
-# (5) - sick:
+# (5) - sick: This notes whether the patient was sick (t) or not (f).
 
-# (6) - pregnant:
+# (6) - pregnant: This notes whether the patient was pregnant (t) or not (f). 
+# It can be observed that of the patients that are pregnant, none of them had hypothyroid disease.
 
-# (7) - thyroid_surgery:
+# (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t)
 
-# (8) - radioactive_iodine_therapyI131:
+# (8) - radioactive_iodine_therapyI131: 
 
-# (9) - query_hypothyroid:
+# (9) - query_hypothyroid: 
 
 # (10) - query_hyperthyroid:
 
@@ -730,19 +765,19 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # (14) - hypopituitarism:
 
-# (15) - psych_condition:
+# (15) - psych_condition: 
 
-# (16) - TSH_measured:
+# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f).
 
-# (17) - T3_measured:
+# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f).
 
-# (18) - T4_measured:
+# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f).
 
-# (19) - thyrox_util_rate_T4U_measured: 
+# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f).
 
-# (20) - FTI_measured:
+# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f).
 
-# (21) - ref_src:
+# (21) - ref_src: This is a categorical code likely used to referring to a specific health department or area. 
 
 # (22) - ThyroidClass: N/A [Invalid Test, void like record_id]
 
@@ -750,9 +785,11 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # Hyper 
 
-# (1) - Sex:
+# (1) - Sex: This is the sex of the patient in the context of the hyper dataset.
 
-# (2) - presc_thyroxine: Similarly to the hypothyroid bar plot, it can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid disease compared to those who are not. Those who tested positive for thyroid disease mainly had "hyperthyroid". However, it appears that the medication works much better on hyperthyroid prevention although further research or statistical tests would have to be conducted further. 
+# (2) - presc_thyroxine: Similarly to the hypothyroid bar plot, it can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid 
+# disease compared to those who are not. Those who tested positive for thyroid disease mainly had "hyperthyroid". However, it appears that the medication works much better on hyperthyroid 
+# prevention although further research or statistical tests would have to be conducted further. 
 
 # (3) - queried_why_on_thyroxine:
 
@@ -849,7 +886,10 @@ ml_scatter <- ggplot(ml_coef_df, aes(x = hyper_ml_coef, y = hypo_ml_coef)) +
 ml_scatter + 
   theme_bw() # ggplot2 themes: [https://ggplot2.tidyverse.org/reference/ggtheme.html]
 
-# Analysis: Observed that there seemed to be more variables leading to greater importance and affect in hyperthyroid compared to hypothyroid although the hypothyroid coefficient contains more outliers such as (4.308487786) for thyroid_surgery which means that thyroid surgery is a leading factor in result of those who have the hypothyroid disease. Meanwhile, it is intriguing that thyroid_surgery only has a coefficient importance of 0.528055152. This leads us to further research statistical questions and answers that certain variables affect certain types of Thyroid disease (i.e. Hypo and Hyper-thyroid) particularly. 
+# Analysis: Observed that there seemed to be more variables leading to greater importance and affect in hyperthyroid compared to hypothyroid although the hypothyroid coefficient contains 
+# more outliers such as (4.308487786) for thyroid_surgery which means that thyroid surgery is a leading factor in result of those who have the hypothyroid disease. 
+# Meanwhile, it is intriguing that thyroid_surgery only has a coefficient importance of 0.528055152. This leads us to further research statistical questions and answers that certain variables 
+# affect certain types of Thyroid disease (i.e. Hypo and Hyper-thyroid) particularly. 
 
 #  ───────────────────────────────────────────────────────────────
 
