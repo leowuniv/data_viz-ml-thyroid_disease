@@ -1005,7 +1005,7 @@ chi_sq_test_thyroxine
 
 print("───────────────────────────────────────────────────────────────") # spacer
 
-# Analysis: Since we have a p-value of 0.004355 which is very low, (0.004355 > 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Thyroxine medication really works in limited and preventing Thyroid Disease.
+# Analysis: Since we have a p-value of 0.004355 which is very low, (0.004355 < 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Thyroxine medication really works in limited and preventing Thyroid Disease.
 
 #  ───────────────────────────────────────────────────────────────
 
@@ -1034,7 +1034,7 @@ chi_sq_test_anthyroid
 
 print("───────────────────────────────────────────────────────────────") # spacer
 
-# Analysis: Since we have a p-value of 0.02203 which is very low, (0.02203 > 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Anthyroid medication really works in limited and preventing Thyroid Disease. However, it appears that prescribed Anthyroid may not be as effective as those who are prescribed Thyroxine.
+# Analysis: Since we have a p-value of 0.02203 which is very low, (0.02203 < 0.05), we have statistically significant evidence that we can reject the null hypothesis and suggest that the Anthyroid medication really works in limited and preventing Thyroid Disease. However, it appears that prescribed Anthyroid may not be as effective as those who are prescribed Thyroxine.
 
 # --------------------------------------------
 
