@@ -853,7 +853,7 @@ ml_scatter +
 
 #  ───────────────────────────────────────────────────────────────
 
-# 1. Medication Factor - Testing for Prescribed Medication
+# 1. Medication Factor - Testing for Prescribed Medication (Thyroxine)
 
 combine_presc_thyroxine <- rbind(
   remove_nas_allhypo[, c("presc_thyroxine", "ThyroidClass")],
@@ -873,7 +873,31 @@ ggplot(combine_presc_thyroxine, aes(x = presc_thyroxine, fill = ThyroidClass)) +
   ) +
   theme_bw()
 
-# Analysis: In the plot we can observe in the side to side bar graph (after observing results from both categorical plots - refer to 2. in the categorical graphs) that the thyroxine prescribed medication is indeed effective in preventing thyroid disease types hypothyroid and hyperthyroid. Those were were not prescribed thyroxine mostly recorded negative for either disease but there were cases of development of compensated hypothyroid, hyperthyroid, and primary hypothyroid.
+# Analysis: In the plot we can observe in the side to side bar graph (after observing results from both categorical plots - refer to 2. in the categorical graphs) that the thyroxine prescribed medication is indeed effective in preventing thyroid disease types hypothyroid and hyperthyroid. Those who were not prescribed thyroxine mostly recorded negative for either disease but there were cases of development of compensated hypothyroid, hyperthyroid, and primary hypothyroid.
+
+#  ───────────────────────────────────────────────────────────────
+
+# 1.2: Medication Factor - Testing for Prescribed Medication (Anthyroid)
+
+combine_presc_anthyroid <- rbind(
+  remove_nas_allhypo[, c("presc_anthyroid_meds", "ThyroidClass")],
+  remove_nas_allhyper[, c("presc_anthyroid_meds", "ThyroidClass")]
+)
+
+#combine_presc_anthyroid # make sure combined properly
+
+# Side bar graph instead of stacked ~ ref 2.
+ggplot(combine_presc_anthyroid, aes(x = presc_anthyroid_meds, fill = ThyroidClass)) +
+  geom_bar(position = "dodge", color = "slategrey") +
+  labs(
+    title = "Prescribed Anthyroid vs Thyroid Subtype (Hypo vs Hyper)",
+    x = "Patient Prescribed Anthyroid",
+    y = "Count",
+    fill = "Thyroid (hypo vs hyper) Subtype"
+  ) +
+  theme_bw()
+
+# Analysis: In the plot we can observe in the side to side bar graph (after observing results from both categorical plots - refer to 4. in the categorical graphs) that the anthyroid prescribed medication is indeed effective in preventing thyroid disease types hypothyroid and hyperthyroid. It can even be said that it is used less by doctors to prescribe by patients as there are higher proportions of negative thyroid disease recordings for non-prescribed patients. Again, those who were not prescribed anthyroid mostly recorded negative for either disease but there were cases of development of compensated hypothyroid, hyperthyroid, and primary hypothyroid.
 
 #  ───────────────────────────────────────────────────────────────
 
