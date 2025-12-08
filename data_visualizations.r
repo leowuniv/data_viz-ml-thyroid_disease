@@ -941,7 +941,70 @@ ggplot(combine_presc_anthyroid, aes(x = presc_anthyroid_meds, fill = ThyroidClas
 
 #  ───────────────────────────────────────────────────────────────
 
-# 2. Surgery?
+# 2. Surgery Factor - Testing for Effectiveness of Thyroid Surgery
+
+combine_surgery_hormones <- rbind(
+  remove_nas_allhypo[, c("thyroid_surgery", "ThyroidClass", "TSH_reading", "T3_reading", "T4_reading")],
+  remove_nas_allhyper[, c("thyroid_surgery", "ThyroidClass", "TSH_reading", "T3_reading", "T4_reading")]
+)
+
+# combine_surgery_hormones # make sure combined properly
+
+# convert readings to numeric as they're currently stored as chr
+combine_surgery_hormones$TSH_reading <- as.numeric(combine_surgery_hormones$TSH_reading)
+combine_surgery_hormones$T3_reading <- as.numeric(combine_surgery_hormones$T3_reading)
+combine_surgery_hormones$T4_reading <- as.numeric(combine_surgery_hormones$T4_reading)
+
+# 2.1 Surgery Factor of TSH Reading
+ggplot(combine_surgery_hormones, aes(x = thyroid_surgery, y = TSH_reading, fill = ThyroidClass)) +
+  geom_boxplot(position = "dodge", color = "slategrey") +
+  labs(
+    title = "Received Surgery vs Thyroid Subtype (Hypo vs Hyper)",
+    x = "Patient Surgery Status",
+    y = "TSH Reading",
+    fill = "Thyroid (hypo vs hyper) Subtype"
+  ) +
+  theme_bw()
+
+# Analysis: TSH levels indicate the greatest discrepancy with primary hypothyroid patients who have not had surgery, as these patients experienced a typical median level of about 50. This was
+# drastically higher than the negative control groups, who both had near zero TSH levels. It is interesting to note that despite receiving surgery, there are still 25% of patients with slightly
+# elevated TSH levels.This ultimately shows that thyroid surgery is effective for patients with hypothyroid in reducing TSH levels, but may slightly increase levels in hyperthyroid patients. 
+
+#  ───────────────────────────────────────────────────────────────
+
+# 2.2 Surgery Factor of T3 Reading
+ggplot(combine_surgery_hormones, aes(x = thyroid_surgery, y = T3_reading, fill = ThyroidClass)) +
+  geom_boxplot(position = "dodge", color = "slategrey") +
+  labs(
+    title = "Received Surgery vs Thyroid Subtype (Hypo vs Hyper)",
+    x = "Patient Surgery Status",
+    y = "T3 Reading",
+    fill = "Thyroid (hypo vs hyper) Subtype"
+  ) +
+  theme_classic()
+
+# Analysis: T3 levels indicate a clear difference among the different subtypes of hypo and hyperthyroid. The normal level maintained by the negative groups ranged from about ~1.5 to 2.5, 
+# whereas patients with hyperthyroid and goitre experienced the highest T3 levels of about 3.5-4.0. Patients with compensated and primary hypothyroid fell on the opposite end of the spectrum, 
+#receiving lower levels of roughly 2.0 and 1.0 respectively. With the groups of negative patients who had received thyroid surgery, it's once again clear that receiving thyroid surgery 
+# returns T3 levels back to normal levels.
+
+#  ───────────────────────────────────────────────────────────────
+
+# 2.3 Surgery Factor of T4 Reading
+ggplot(combine_surgery_hormones, aes(x = thyroid_surgery, y = T4_reading, fill = ThyroidClass)) +
+  geom_boxplot(position = "dodge", color = "slategrey") +
+  labs(
+    title = "Received Surgery vs Thyroid Subtype (Hypo vs Hyper)",
+    x = "Patient Surgery Status",
+    y = "T4 Reading",
+    fill = "Thyroid (hypo vs hyper) Subtype"
+  ) +
+  theme_test()
+
+# Analysis: As expected, the T4 readings indicate similar level distributions as the T3 readings. The median of the normal range maintained by the negative groups hovered around a level of 100.
+# However, there is a key difference in hyperthyroid patients and goitre, as those with goitre did not have nearly as high T4 levels, while hyperthyroid patients maintained a high T4 level
+# of nearly double the control groups. Once again, the compensated and primary hypothyroid groups without surgery experienced lower levels of T4 of ~80 and ~50 respectively.These findings
+# similarly indicate how surgery helps restore typical T4 levels by reducing and increasing the levels of hyperthyroid and hypothyroid patients respectively.
 
 #  ───────────────────────────────────────────────────────────────
 
