@@ -1101,6 +1101,16 @@ print("────────────────────────�
 
 # --------------------------------------------
 
+#t-test analysis :
+remove_nas_allhypo_age <- as.numeric(remove_nas_allhypo$age) #use as.numeric to convert from character to numeric 
+#t-test with automatic 
+t.test(remove_nas_allhypo_age, mu = 50)
+#Ha: mean is not 50 years old 
+#Ho: mean is 50 years old. 
+#We automatically have 0.05, but our p-value is 1.425e-11 which is basically 0. No matter what we set the confidence level to be either 95% or some other one. 
+#We have statistically significant evidence that we can reject the null hypothesis and suggest that the mean value of age is not 50 years old. 
+#https://www.geeksforgeeks.org/r-language/t-test-approach-in-r-programming/
+
 # --------------------------------------------
 # {R11}
 
