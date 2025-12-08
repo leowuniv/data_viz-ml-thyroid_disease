@@ -751,21 +751,24 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t)
 
-# (8) - radioactive_iodine_therapyI131: 
+# (8) - radioactive_iodine_therapyI131: This denotes whether or not the patient had Radioactive Iodine (I-131) treatement. Either true or false
 
-# (9) - query_hypothyroid: 
+# (9) - query_hypothyroid: Notes whether the person has hypothyroid, T or F. 
 
-# (10) - query_hyperthyroid:
+# (10) - query_hyperthyroid: Notes whether the person has hyperthyroid, T or F. 
 
-# (11) - lithium:
+# (11) - lithium: Indicates whether lithium was used to help drecrease the symptoms. T or F. 
 
-# (12) - goitre:
+# (12) - goitre: Indicates whether someone has goitre causes by thyroid. T or F. 
+#https://my.clevelandclinic.org/health/diseases/12625-goiter
 
-# (13) - tumor:
+# (13) - tumor: Indicates whether someone has tumor as a result of thyroid cancer. T or F. 
+#https://my.clevelandclinic.org/health/diseases/12210-thyroid-cancer
 
-# (14) - hypopituitarism:
+# (14) - hypopituitarism: This is where due to the thyroid condition, you're porducing less hormones. T or F. 
+# https://my.clevelandclinic.org/health/diseases/22102-hypopituitarism
 
-# (15) - psych_condition: 
+# (15) - psych_condition: If a person has a psychological condition that came with the thyroid disease. T or F. 
 
 # (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f).
 
