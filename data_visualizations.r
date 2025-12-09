@@ -1104,6 +1104,8 @@ print(confusionMatrix(predicted_classes_hyper, test_data$ThyroidClass))
 # print confusion matrix for hypothyroid
 print(confusionMatrix(predicted_classes_hypo, test_data_hypo$ThyroidClass))
 
+print("───────────────────────────────────────────────────────────────") # spacer
+
 # Source: https://www.digitalocean.com/community/tutorials/confusion-matrix-in-r
 
 # Analysis: confusionMatrix() is a function in the caret library that takes in a factor vector of predicted classes and a factor vector of ground truth classes.
