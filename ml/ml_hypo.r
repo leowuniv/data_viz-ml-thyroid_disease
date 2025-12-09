@@ -15,16 +15,16 @@ library(glmnet)
 str(remove_nas_allhypo)
 str(remove_nas_allhypo_test)
 
-train_data <- remove_nas_allhypo
-test_data <- remove_nas_allhypo_test
+train_data_hypo <- remove_nas_allhypo
+test_data_hypo <- remove_nas_allhypo_test
 
 # convert numeric variables from character to numeric
 numeric_vars <- c("age", "TSH_reading", "T3_reading", "T4_reading", 
                   "thyrox_util_rate_T4U_reading", "FTI_reading")
 
 for(var in numeric_vars) {
-  train_data[[var]] <- as.numeric(train_data[[var]])
-  test_data[[var]] <- as.numeric(test_data[[var]])
+  train_data_hypo[[var]] <- as.numeric(train_data_hypo[[var]])
+  test_data_hypo[[var]] <- as.numeric(test_data_hypo[[var]])
 }
 
 # convert boolean variables to numeric
@@ -37,52 +37,52 @@ binary_vars <- c("presc_thyroxine", "queried_why_on_thyroxine",
                  "thyrox_util_rate_T4U_measured", "FTI_measured", "ref_src")
 
 for(var in binary_vars) {
-  train_data[[var]] <- ifelse(train_data[[var]] == "t", 1, 0)
-  test_data[[var]] <- ifelse(test_data[[var]] == "t", 1, 0)
+  train_data_hypo[[var]] <- ifelse(train_data_hypo[[var]] == "t", 1, 0)
+  test_data_hypo[[var]] <- ifelse(test_data_hypo[[var]] == "t", 1, 0)
 }
 
 # convert sex to factor
-train_data$sex <- as.factor(train_data$sex)
-test_data$sex <- as.factor(test_data$sex)
+train_data_hypo$sex <- as.factor(train_data_hypo$sex)
+test_data_hypo$sex <- as.factor(test_data_hypo$sex)
 
 # convert target variable to factor
-train_data$ThyroidClass <- as.factor(train_data$ThyroidClass)
-test_data$ThyroidClass <- as.factor(test_data$ThyroidClass)
+train_data_hypo$ThyroidClass <- as.factor(train_data_hypo$ThyroidClass)
+test_data_hypo$ThyroidClass <- as.factor(test_data_hypo$ThyroidClass)
 
 # remove record_id because useless for model
-train_data$record_id <- NULL
-test_data$record_id <- NULL
+train_data_hypo$record_id <- NULL
+test_data_hypo$record_id <- NULL
 
 # observe different classes in thyroid class
-print(table(unique(train_data$ThyroidClass)))
-print(table(unique(test_data$ThyroidClass)))
+print(table(unique(train_data_hypo$ThyroidClass)))
+print(table(unique(test_data_hypo$ThyroidClass)))
 
 # since train dataset contains secondary hypothyroid class (which is not seen in test dataset), remove it
-test_data <- test_data[test_data$ThyroidClass %in% unique(train_data$ThyroidClass),]
+test_data_hypo <- test_data_hypo[test_data_hypo$ThyroidClass %in% unique(train_data_hypo$ThyroidClass),]
 
 # we want to have the model be binary classification (hypothyroid or not) but we have multiple class
 # variables so we need to split them up based on their classification
 # compensated hypothyroid -> hypothyroid
 # primary hypothyroid -> hypothyroid
 # negative -> non-hypothyroid
-train_data$ThyroidClass <- ifelse(train_data$ThyroidClass %in% c("compensated hypothyroid", "primary hypothyroid"),
+train_data_hypo$ThyroidClass <- ifelse(train_data_hypo$ThyroidClass %in% c("compensated hypothyroid", "primary hypothyroid"),
                           "hypothyroid",
                           "non-hypothyroid")
-train_data$ThyroidClass <- as.factor(train_data$ThyroidClass)
-test_data$ThyroidClass <- ifelse(test_data$ThyroidClass %in% c("compensated hypothyroid", "primary hypothyroid"),
+train_data_hypo$ThyroidClass <- as.factor(train_data_hypo$ThyroidClass)
+test_data_hypo$ThyroidClass <- ifelse(test_data_hypo$ThyroidClass %in% c("compensated hypothyroid", "primary hypothyroid"),
                           "hypothyroid",
                           "non-hypothyroid")
-test_data$ThyroidClass <- as.factor(test_data$ThyroidClass)
+test_data_hypo$ThyroidClass <- as.factor(test_data_hypo$ThyroidClass)
 
 # confirm data looks correct
-str(train_data)
-str(test_data)
+str(train_data_hypo)
+str(test_data_hypo)
 
 # convert data into matrix for glmnet model
 # [,-1] removes intercept column from matrix
-x <- model.matrix(ThyroidClass ~ ., data=train_data)[,-1]
+x <- model.matrix(ThyroidClass ~ ., data=train_data_hypo)[,-1]
 # set y to target variable
-y <- train_data$ThyroidClass
+y <- train_data_hypo$ThyroidClass
 
 # glmnet is a ridge regularized logistic regression model which penalizes the model during training process
 # this model is better than base R glm because of the instability of the data (many cases of nonhypothyroid
@@ -106,7 +106,7 @@ model <- cv.glmnet(
 
 # convert data into matrix for glmnet model
 # [,-1] removes intercept column from matrix
-x_test <- model.matrix(ThyroidClass ~ ., test_data)[, -1]
+x_test <- model.matrix(ThyroidClass ~ ., test_data_hypo)[, -1]
 
 # predict model's probabilities on test set
 # newx -> test set
@@ -123,17 +123,17 @@ probabilities <- predict(
 # if the probability is over 0.85 (chosen intuitively), then the model will predict that the patient
 # with its features is non-hyperthyroid and if it is less than the model will predict that the patient 
 # is hypothyroid.
-predicted_classes <- ifelse(probabilities > 0.85,
+predicted_classes_hypo <- ifelse(probabilities > 0.85,
                             "non-hypothyroid",
                             "hypothyroid")
 # confusion matrix expects factored type
-predicted_classes <- factor(predicted_classes)
+predicted_classes_hypo <- factor(predicted_classes_hypo)
 # Confusion matrix offers some useful statistics on our model
 # source: https://www.digitalocean.com/community/tutorials/confusion-matrix-in-r
-print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
+print(confusionMatrix(predicted_classes_hypo, test_data_hypo$ThyroidClass))
 
 # Counts how many predictions from the model matched the actual diagnoses
-accuracy <- mean(predicted_classes == test_data$ThyroidClass)
+accuracy <- mean(predicted_classes_hypo == test_data_hypo$ThyroidClass)
 print(paste("Accuracy: ", accuracy))
 
 # observe the coefficients of each variable at the best regularization value

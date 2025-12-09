@@ -6,6 +6,10 @@
 # I will then analyze the model's performance and extract what features are the most important in determining
 # what patients were classified with the hyperthyroid disease.
 
+# install.packages("tidyverse")
+# install.packages("caret")
+# install.packages("glmnet")
+
 # import packages
 library(tidyverse)
 library(caret)
@@ -124,22 +128,19 @@ probabilities <- predict(
 # if the probability is over 0.8 (chosen intuitively), then the model will predict that the patient
 # with its features is non-hyperthyroid and if it is less than the model will predict that the patient 
 # is hyperthyroid.
-predicted_classes <- ifelse(probabilities > 0.8,
+predicted_classes_hyper <- ifelse(probabilities > 0.8,
                             "non-hyperthyroid",
                             "hyperthyroid")
 # Necessary for confusion matrix so that the dimensions of the predictions are correct
-predicted_classes <- factor(predicted_classes,
+predicted_classes_hyper <- factor(predicted_classes_hyper,
                             levels = levels(test_data$ThyroidClass))
 
 # Counts how many predictions from the model matched the actual diagnoses
-accuracy <- mean(predicted_classes == test_data$ThyroidClass)
+accuracy <- mean(predicted_classes_hyper == test_data$ThyroidClass)
 print(accuracy)
 
 # Confusion matrix offers some useful statistics on our model
-print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
-
-# visualize how the logistic regression coefficients behave as regularization varies
-plot(model)
+print(confusionMatrix(predicted_classes_hyper, test_data$ThyroidClass))
 
 # observe the coefficients of each variable at the best regularization value
 # shows us what features contribute most to classification
