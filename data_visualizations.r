@@ -892,6 +892,8 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 # a patient has a subtype of hyperthyroid, there's not many conclusions that can be drawn. Of the different codes, the "other" group had the most cases of hyperthyroid and T3 toxic, 
 # and the highest diseased patients per capita. However, no clear information can be gathered as this "other" category remains ambiguous.
 
+# (22) - ThyroidClass: N/A [Invalid Test, void like record_id]
+
 # --------------------------------------------
 
 # --------------------------------------------
