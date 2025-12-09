@@ -1196,6 +1196,6 @@ t.test(remove_nas_allhypo_age, mu = 50)
 # --------------------------------------------
 # {R11}
 
-# Future Implementation (Goals): Menu Visualization Integration
+# Future Implementation (Goal): Menu Visualization Integration
 
 # --------------------------------------------
