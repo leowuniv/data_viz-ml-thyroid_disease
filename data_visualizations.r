@@ -1053,15 +1053,28 @@ ggplot(combine_surgery_hormones, aes(x = thyroid_surgery, y = T4_reading, fill =
 
 # ============================================================
 
-# Confidence Interval Test
-
 # 0. ML attributes test
 
-#print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
+# install.packages("caret") if needed
+library(caret)
 
-# Analysis: 
+# print confusion matrix for hyperthyroid
+print(confusionMatrix(predicted_classes_hyper, test_data$ThyroidClass))
 
-#  ───────────────────────────────────────────────────────────────
+# print confusion matrix for hypothyroid
+print(confusionMatrix(predicted_classes_hypo, test_data_hypo$ThyroidClass))
+
+# Source: https://www.digitalocean.com/community/tutorials/confusion-matrix-in-r
+
+# confusionMatrix() is a function in the caret library that takes in a factor vector of predicted classes and a factor vector of ground truth classes.
+# The function will return a number of useful statistics from the result of the predicted classes vs true classes. 
+# It features a table that displays the predicted classes from the model compared to the true classes, the accuracy, 95% confidence interval, and many other statistics from our model. 
+# The table is the most important output from this function as it shows when our model correctly predicted hyperthyroid/hypothyroid vs when it incorrectly predicted it or failed to predict it.
+# These metrics are useful in analyzing our model, specifically in the medical field, because we don't want our model to be mis-evaluating a patient for a disease. 
+# Another important metric from the confusionMatrix() are the accuracy which is displayed as ~98% for our hyperthyroid model and ~96% for our hypothyroid model. These are solid numbers, but then again,
+# the dataset is very imbalanced where there are many more negative cases than positive cases. Lastly, another important metric is the 95% confidence interval which explains that if we were to train
+# our model on different random samples of our training dataset, the accuracy would fall within that range. For our hyperthyroid model, our 95% CI was given as (0.9737, 0.9931) and for our
+# hypothyroid model, it was given as (0.9357, 0.9683).
 
 # Chi-Square test (categorical variables)
 # Reference --> https://www.geeksforgeeks.org/r-language/chi-square-test-in-r/
