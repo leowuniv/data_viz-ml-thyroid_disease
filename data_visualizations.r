@@ -742,62 +742,67 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 # Those who tested positive for thyroid disease mainly had "compensated hypothyroid" and "primary hypothyroid". 
 
 # (3) - queried_why_on_thyroxine: This notes whether the patient was queried about why they were taking thyroxine (t) or not (f). There is a small amount the patient has thyroxine, they have the negative thyroid class. 
-#The majority of them don't have thyroxine, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them don't have thyroxine, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (4) - presc_anthyroid_meds: This notes whether the patient was prescribed antyhroid medication (t) or not (f). There is a small amount the patient has meds prescribed, they have the negative thyroid class. 
-#The majority of them don't have meds prescribed, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them don't have meds prescribed, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (5) - sick: This notes whether the patient was sick (t) or not (f). There is a small amount the patient sick, they have the negative thyroid class. 
-#The majority of them aren't sick, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them aren't sick, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (6) - pregnant: This notes whether the patient was pregnant (t) or not (f). 
 # It can be observed that of the patients that are pregnant, none of them had hypothyroid disease. They have the negative thyroid class. 
-#The majority of them aren't pregnant, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them aren't pregnant, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t). There is a small amount the patient has surgery, they have the negative thyroid class. 
-#The majority of them don't have surgery, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them don't have surgery, their thyroid class is mainly negative with a small amount of compensated and primary.
 
-# (8) - radioactive_iodine_therapyI131: This denotes whether or not the patient had Radioactive Iodine (I-131) treatement. Either true or false. There is a small amount the patient has the therapy, they have the negative thyroid class. 
-#The majority of them don't have the therapy, their thyroid class is maninly negative with a small amount of compensated and primary.
+# (8) - radioactive_iodine_therapyI131: This denotes whether or not the patient had Radioactive Iodine (I-131) treatment Either true or false. There is a small amount the patient has the therapy, they have the negative thyroid class. 
+#The majority of them don't have the therapy, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (9) - query_hypothyroid: Notes whether the person has hypothyroid, T or F. There is a small amount the patient has hypothyroid, they have the negative thyroid class. 
-#The majority of them don't have hypothyroid, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them don't have hypothyroid, their thyroid class is mainly negative with a small amount of compensated and primary.
 
 # (10) - query_hyperthyroid: Notes whether the person has hyperthyroid, T or F. There is a small amount the patient has hyperthyroid, they have the negative thyroid class. 
-#The majority of them don't have hyperthyroid, their thyroid class is maninly negative with a small amount of compensated and primary.
+#The majority of them don't have hyperthyroid, their thyroid class is mainly negative with a small amount of compensated and primary.
 
-# (11) - lithium: Indicates whether lithium was used to help drecrease the symptoms. T or F. All of the patients didn't consume lithium. 
+# (11) - lithium: Indicates whether lithium was used to help decrease the symptoms. T or F. All of the patients didn't consume lithium. 
 #For those who didn't, a majority of them has negative thyroid class, with a small amount of compensated and primary.
 
-# (12) - goitre: Indicates whether someone has goitre causes by thyroid. T or F. There is a small amount the patient has goitre, they have the negative thyroid class. 
-#The majority of them don't have goitre, their thyroid class is maninly negative with a small amount of compensated and primary.
-#https://my.clevelandclinic.org/health/diseases/12625-goiter
+# Source: https://my.clevelandclinic.org/health/diseases/12625-goiter
+# (12) - goitre: Indicates whether someone has goiter causes by thyroid. T or F. There is a small amount the patient has goiter, they have the negative thyroid class. 
+#The majority of them don't have goiter, their thyroid class is mainly negative with a small amount of compensated and primary.
 
+# Source: https://my.clevelandclinic.org/health/diseases/12210-thyroid-cancer
 # (13) - tumor: Indicates whether someone has tumor as a result of thyroid cancer. T or F. There is a small amount the patient has the tumor, they have the negative thyroid class. 
-#The majority of them don't have tumor, their thyroid class is maninly negative with a small amount of compensated and primary.
-#https://my.clevelandclinic.org/health/diseases/12210-thyroid-cancer
+#The majority of them don't have tumor, their thyroid class is mainly negative with a small amount of compensated and primary.
 
-# (14) - hypopituitarism: This is where due to the thyroid condition, you're porducing less hormones. T or F. All of the patients don't experience it.  
-# For those that don't, their thyroid class is maninly negative with a small amount of compensated and primary. 
-# https://my.clevelandclinic.org/health/diseases/22102-hypopituitarism
+# Source: # https://my.clevelandclinic.org/health/diseases/22102-hypopituitarism
+# (14) - hypopituitarism: This is where due to the thyroid condition, you're producing less hormones. T or F. All of the patients don't experience it.  
+# For those that don't, their thyroid class is mainly negative with a small amount of compensated and primary. 
 
 # (15) - psych_condition: If a person has a psychological condition that came with the thyroid disease. T or F. More false of psychiatric condition than true. 
-#For the false the majority is negative while there is a small amount comparably of compensated and primary. For the true, there is only negaitve.  
+#For the false the majority is negative while there is a small amount comparably of compensated and primary. For the true, there is only negative.  
 
-# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f). Majority is negative. 
-#Small amount of compensated and primary. 
+# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their TSH levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their TSH levels.
 
-# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f). Majority is negative. 
-#Small amount of compensated and primary. 
+# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T3 levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T3 levels.
 
-# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f). Majority is negative. 
-#Small amount of compensated and primary. 
+# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T4 levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T4 levels.
 
-# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f). Majority is negative. 
-#Small amount of compensated and primary. 
+# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T4U levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T4U levels.
 
-# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f). The majority was the negative
-#There is a small amount of compensated and primary. 
+# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their FTI levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their FTI levels.
 
 # (21) - ref_src: This is a categorical code likely used to referring to a specific health department or area. The only thyroid class 
 #for the STMW and SVHD is the negative thyroid class. SVHC has negaitve plus secondary. The last two has all three except seconday. 
@@ -808,49 +813,84 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # Hyper 
 
-# (1) - Sex: This is the sex of the patient in the context of the hyper dataset.
+# (1) - Sex: This is the sex of the patient in the context of the hyper dataset, where f = female and m = male. It can be observed that females are more susceptible to both hyperthyroid
+# and goitre than males as they have an absolute value of patients with these conditions greater than their male counterparts. It also appears proportionally higher, however, actual
+# proportions must be calculated to verify this observation.
 
 # (2) - presc_thyroxine: Similarly to the hypothyroid bar plot, it can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid 
 # disease compared to those who are not. Those who tested positive for thyroid disease mainly had "hyperthyroid". However, it appears that the medication works much better on hyperthyroid 
 # prevention although further research or statistical tests would have to be conducted further. 
 
-# (3) - queried_why_on_thyroxine:
+# (3) - queried_why_on_thyroxine: This notes whether the patient was queried about why they were taking thyroxine (t) or not (f). The vast majority of patients were not queried about
+# thyroxine use. It indicates that thyroxine use poses an issue of testing for other values, such as the various hormone levels. Of the patients that were queried, all of the patients
+# did not have any hyperthyroid disease, furthering this idea.
 
-# (4) - presc_anthyroid_meds:
+# (4) - presc_anthyroid_meds: This notes whether the patient was prescribed antyhroid medication (t) or not (f). Of the patients prescribed antyhroid, all were of the negative control group.
+# All patients with any subset of hyperthyroid disesase were not prescriebd the medication, except for a handful of T3 toxic cases.
 
-# (5) - sick:
+# (5) - sick: This notes whether the patient was recording sick symptoms (t) or not (f). of the patients reporting the symptoms, almost all of them were of the negative control group. 
+# This may indicate that the symptoms and signs of hyperthyroid disease are subtle or are slow developing.
 
-# (6) - pregnant:
+# (6) - pregnant: This notes whether the patient was pregnant (t) or not (f). 
+# It can be observed that of the patients that are pregnant, very few had any hyperthyroid disease, with that subtype only being goiter. This may indicate that pregnant women
+# are no more susceptible to hyperthroidism than any other group.
 
-# (7) - thyroid_surgery:
+# (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t). Of the patients who had received thyroid surgery, none of them report having or still
+# having hyperthyroidism. This may indicate that the surgery is very effective or that early preventive measures can stop the disease early on.
 
-# (8) - radioactive_iodine_therapyI131:
+# (8) - radioactive_iodine_therapyI131: This notes whether the patient had Radioactive Iodine (I-131) treatment (t) or not (f). Of the patients who received the treatment, 
+# all of them were of the negative control group. This may indicate that the therapy may not be the most effective or a popular treatment as patients with hyperthroidism aren't being treated
+# with it.
 
-# (9) - query_hypothyroid:
+# (9) - query_hypothyroid: This notes whether the person has hyperthyroid (t) or not (f). It's interesting to note how the groups of patients with hypothyroid are split between
+# having and not having a subsets of hypothyroid disease, with the majority in the false group. This may indicate that some did not know they had their condition beforehand.
 
-# (10) - query_hyperthyroid:
+# (10) - query_hyperthyroid: This whether the person has hyperthyroid (t) or not (f). It's interesting to note how the groups of patients with hyperthyroid are split between
+# having and not having a subsets of hyperthyroid disease. This may indicate that some did not know they had their condition beforehand.
 
-# (11) - lithium:
+# (11) - lithium: This notes whether lithium was used (t) or not (f). All hyperthyroid patients reported not consuming any lithium, with those reporting having consumed lithium as a mood
+# stablizier were all of the negative control group.
 
-# (12) - goitre:
+# Source: https://my.clevelandclinic.org/health/diseases/12625-goiter
+# (12) - goitre: This notes whether the patient has goiter condition (t) or not (f). Goiter is the overgrowth of the thyroid gland. It's interesting to note that despite patients 
+# being diagnosed with goiter, they do not actually have goiter condition, with those who do  all being negative for any hyperthyroid disease.
 
-# (13) - tumor:
+# (13) - tumor: This notes whether the patient has a record tumor (t) or not (f). While patients with hyperthyroid and T3 toxic subtypes almost all reported having no tumors, a significant
+# amount of patients with goiter reported having a tumor. While they may not be completely correlated with another, it is important to note and would be interesting to explore the 
+# relationship between patients with goiter and a tumor.
 
-# (14) - hypopituitarism:
+# Source: https://my.clevelandclinic.org/health/diseases/22102-hypopituitarism
+# (14) - hypopituitarism: This notes whether the patient has hypopituitarism (t) or not (f). Hypopituitarism is a condition where there's a lack of hormone production from the pituitary glands.
+# All of the hyperthyroid patients did not have hypopituarism, with there only being a handful of negative patients having the condition at all. This indicates that hypopituitarism likely
+# has little to no impact on hyperthyroid diseases, since of the patients who did have the condition, they were not linked to any hyperthyroid disease.
 
-# (15) - psych_condition:
+# (15) - psych_condition: This notes whether the patient has a documented psychiatric condition (t) or not (f). The vast majority of patients did not have any documented psychiatric conditions
+# and those who did were all negative for any hyperthyroid disease. This indicates that psychiatric conditions don't lead to hyperthyroid disease as none of the patients with documented 
+# conditions were diagnosed with any form of hyperthyroid disease. 
 
-# (16) - TSH_measured:
+# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their TSH levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their TSH levels.
 
-# (17) - T3_measured:
+# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T3 levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T3 levels.
 
-# (18) - T4_measured:
+# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T4 levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T4 levels.
 
-# (19) - thyrox_util_rate_T4U_measured: 
+# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their T4U levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their T4U levels.
 
-# (20) - FTI_measured:
+# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f). As this visualization simply shows whether the reading was 
+# taken and shows that all readings were in fact measured, there is virtually no analytical value when all patients recorded their FTI levels, after removing any potential NA readings.
+# Thus, it indicates that there should be substantial data when looking at the difference of the thyroid groups among their FTI levels.
 
-# (21) - ref_src:
+# (21) - ref_src: This is a categorical code likely used to referring to a specific health department or area. As this categorical code likely does not have significant correlation to whether
+# a patient has a subtype of hyperthyroid, there's not many conclusions that can be drawn. Of the different codes, the "other" group had the most cases of hyperthyroid and T3 toxic, 
+# and the highest diseased patients per capita. However, no clear information can be gathered as this "other" category remains ambiguous.
 
 # (22) - ThyroidClass: N/A [Invalid Test, void like record_id]
 
