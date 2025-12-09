@@ -734,53 +734,73 @@ ggplot(remove_nas_allhyper, aes(x = ref_src, fill = ThyroidClass)) +
 
 # Hypo
 
-# (1) - Sex: This is the sex of the patient in the context of the hypo dataset.
+# (1) - Sex: This is the sex of the patient in the context of the hypo dataset. There almost twice as many females compared to males who has the thyroid disease. 
+#Both of them has the compensated, negative, and primary thyroid classes. The majority for both being negative class. 
 
 # (2) - presc_thyroxine: Thyroxine is a medication that treats Thyroid Disease (primarily hypothyroidism). This notes whether patients were prescribed thyroxine (t) or not (f).
 # It can be observed that patients who are prescribed thyroxine medication generally tend to have negative results of thyroid disease compared to those who are not. 
 # Those who tested positive for thyroid disease mainly had "compensated hypothyroid" and "primary hypothyroid". 
 
-# (3) - queried_why_on_thyroxine: This notes whether the patient was queried about why they were taking thyroxine (t) or not (f).
+# (3) - queried_why_on_thyroxine: This notes whether the patient was queried about why they were taking thyroxine (t) or not (f). There is a small amount the patient has thyroxine, they have the negative thyroid class. 
+#The majority of them don't have thyroxine, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (4) - presc_anthyroid_meds: This notes whether the patient was prescribed antyhroid medication (t) or not (f). 
+# (4) - presc_anthyroid_meds: This notes whether the patient was prescribed antyhroid medication (t) or not (f). There is a small amount the patient has meds prescribed, they have the negative thyroid class. 
+#The majority of them don't have meds prescribed, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (5) - sick: This notes whether the patient was sick (t) or not (f).
+# (5) - sick: This notes whether the patient was sick (t) or not (f). There is a small amount the patient sick, they have the negative thyroid class. 
+#The majority of them aren't sick, their thyroid class is maninly negative with a small amount of compensated and primary.
 
 # (6) - pregnant: This notes whether the patient was pregnant (t) or not (f). 
-# It can be observed that of the patients that are pregnant, none of them had hypothyroid disease.
+# It can be observed that of the patients that are pregnant, none of them had hypothyroid disease. They have the negative thyroid class. 
+#The majority of them aren't pregnant, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t)
+# (7) - thyroid_surgery: This notes whether the patient had performed thyroid surgery (t) or not (t). There is a small amount the patient has surgery, they have the negative thyroid class. 
+#The majority of them don't have surgery, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (8) - radioactive_iodine_therapyI131: This denotes whether or not the patient had Radioactive Iodine (I-131) treatement. Either true or false
+# (8) - radioactive_iodine_therapyI131: This denotes whether or not the patient had Radioactive Iodine (I-131) treatement. Either true or false. There is a small amount the patient has the therapy, they have the negative thyroid class. 
+#The majority of them don't have the therapy, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (9) - query_hypothyroid: Notes whether the person has hypothyroid, T or F. 
+# (9) - query_hypothyroid: Notes whether the person has hypothyroid, T or F. There is a small amount the patient has hypothyroid, they have the negative thyroid class. 
+#The majority of them don't have hypothyroid, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (10) - query_hyperthyroid: Notes whether the person has hyperthyroid, T or F. 
+# (10) - query_hyperthyroid: Notes whether the person has hyperthyroid, T or F. There is a small amount the patient has hyperthyroid, they have the negative thyroid class. 
+#The majority of them don't have hyperthyroid, their thyroid class is maninly negative with a small amount of compensated and primary.
 
-# (11) - lithium: Indicates whether lithium was used to help drecrease the symptoms. T or F. 
+# (11) - lithium: Indicates whether lithium was used to help drecrease the symptoms. T or F. All of the patients didn't consume lithium. 
+#For those who didn't, a majority of them has negative thyroid class, with a small amount of compensated and primary.
 
-# (12) - goitre: Indicates whether someone has goitre causes by thyroid. T or F. 
+# (12) - goitre: Indicates whether someone has goitre causes by thyroid. T or F. There is a small amount the patient has goitre, they have the negative thyroid class. 
+#The majority of them don't have goitre, their thyroid class is maninly negative with a small amount of compensated and primary.
 #https://my.clevelandclinic.org/health/diseases/12625-goiter
 
-# (13) - tumor: Indicates whether someone has tumor as a result of thyroid cancer. T or F. 
+# (13) - tumor: Indicates whether someone has tumor as a result of thyroid cancer. T or F. There is a small amount the patient has the tumor, they have the negative thyroid class. 
+#The majority of them don't have tumor, their thyroid class is maninly negative with a small amount of compensated and primary.
 #https://my.clevelandclinic.org/health/diseases/12210-thyroid-cancer
 
-# (14) - hypopituitarism: This is where due to the thyroid condition, you're porducing less hormones. T or F. 
+# (14) - hypopituitarism: This is where due to the thyroid condition, you're porducing less hormones. T or F. All of the patients don't experience it.  
+# For those that don't, their thyroid class is maninly negative with a small amount of compensated and primary. 
 # https://my.clevelandclinic.org/health/diseases/22102-hypopituitarism
 
-# (15) - psych_condition: If a person has a psychological condition that came with the thyroid disease. T or F. 
+# (15) - psych_condition: If a person has a psychological condition that came with the thyroid disease. T or F. More false of psychiatric condition than true. 
+#For the false the majority is negative while there is a small amount comparably of compensated and primary. For the true, there is only negaitve.  
 
-# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f).
+# (16) - TSH_measured: TSH or thyroid stimulating hormone. This notes whether the reading was measured (t) or not (f). Majority is negative. 
+#Small amount of compensated and primary. 
 
-# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f).
+# (17) - T3_measured: Triiodothyronine or T3_reading. This notes whether the reading was measured (t) or not (f). Majority is negative. 
+#Small amount of compensated and primary. 
 
-# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f).
+# (18) - T4_measured: T4 or thyroxine. This notes whether the reading was measured (t) or not (f). Majority is negative. 
+#Small amount of compensated and primary. 
 
-# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f).
+# (19) - thyrox_util_rate_T4U_measured: Thyroxine Utilization Rate. This notes whether the reading was measured (t) or not (f). Majority is negative. 
+#Small amount of compensated and primary. 
 
-# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f).
+# (20) - FTI_measured: Free Thyroxine Index. This notes whether the reading was measured (t) or not (f). The majority was the negative
+#There is a small amount of compensated and primary. 
 
-# (21) - ref_src: This is a categorical code likely used to referring to a specific health department or area. 
+# (21) - ref_src: This is a categorical code likely used to referring to a specific health department or area. The only thyroid class 
+#for the STMW and SVHD is the negative thyroid class. SVHC has negaitve plus secondary. The last two has all three except seconday. 
 
 # (22) - ThyroidClass: N/A [Invalid Test, void like record_id]
 
