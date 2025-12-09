@@ -1059,6 +1059,8 @@ ggplot(combine_surgery_hormones, aes(x = thyroid_surgery, y = T4_reading, fill =
 
 #print(confusionMatrix(predicted_classes, test_data$ThyroidClass))
 
+# Analysis: 
+
 #  ───────────────────────────────────────────────────────────────
 
 # Chi-Square test (categorical variables)
